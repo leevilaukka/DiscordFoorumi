@@ -11,6 +11,8 @@ import Guilds from "./components/Guilds";
 import Navbar from "./components/Navbar";
 import {getUser} from "./actions/userActions";
 import {getGuilds} from "./actions/guildActions";
+import NoAccess from "./components/NoAccess";
+import PrivateRoute from "./components/PrivateRoute";
 
 
 function App() {
@@ -32,10 +34,10 @@ function App() {
     return (
         <Router>
             <AppWrapper className="App">
-                <Navbar/>
-                {loggedIn ? <Logout/> : <Login/>}
-                {loggedIn && <img alt={`Käyttäjän ${user.username} profiilikuva`} src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.jpg`}/>}
-                {loggedIn && <Guilds/>}
+                <Route path="/">
+                    <Navbar/>
+                </Route>
+                <PrivateRoute path="/guilds" component={Guilds}/>
                 <Switch>
                     <Route path="/discord/callback" component={DiscordCallback}/>
                 </Switch>

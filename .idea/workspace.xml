@@ -2,35 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf6ab583-ca77-4bd7-8192-474bc38bc570" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/authActions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/guildActions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/userActions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AppWrapper.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Button.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/DiscordCallback.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Guilds.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Logout.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Navbar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/authReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/guildReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/userReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/actions/postActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/NoAccess.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/PrivateRoute.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/logintest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/logintest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Guilds.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Guilds.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,12 +70,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1580196981518</updated>
-      <workItem from="1580196982849" duration="27382000" />
+      <workItem from="1580196982849" duration="35683000" />
     </task>
+    <task id="LOCAL-00001" summary="DiscordFoorumi alpha 1.0">
+      <created>1580291162033</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1580291162033</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="DiscordFoorumi alpha 1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="DiscordFoorumi alpha 1.0" />
   </component>
   <component name="WindowStateProjectService">
     <state x="648" y="344" width="614" height="416" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1580209388026">
@@ -106,9 +98,17 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="693" y="301" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1580197268471" />
-    <state x="623" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1580287565005">
+    <state x="523" y="61" width="864" height="982" key="CommitChangelistDialog2" timestamp="1580291161936">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="623" y="257" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1580287565005" />
+    <state x="523" y="61" width="864" height="982" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1580291161936" />
+    <state x="555" y="284" width="800" height="536" key="Vcs.Push.Dialog.v2" timestamp="1580291166835">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="555" y="284" width="800" height="536" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1580291166835" />
+    <state x="623" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1580298943808">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="623" y="257" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1580298943808" />
   </component>
 </project>
