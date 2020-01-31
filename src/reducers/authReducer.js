@@ -1,4 +1,4 @@
-import {LOGIN,LOGOUT} from "../actions/authActions";
+import {LOGIN, LOGOUT} from "../actions/authActions";
 
 const authReducer = (state = false, action) => {
     switch (action.type) {

@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 export const REQUEST_USER = "REQUEST_USER";
 export const REQUEST_USER_SUCCESS = "REQUEST_USER_SUCCESS";
 export const REQUEST_USER_ERROR = "REQUEST_USER_ERROR";

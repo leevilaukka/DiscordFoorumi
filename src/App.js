@@ -1,16 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-
 // Redux
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {login} from "./actions/authActions";
 import {getUser} from "./actions/userActions";
 import {getGuilds} from "./actions/guildActions";
-
 // Components
 import AppWrapper from "./components/AppWrapper";
-import Guilds from "./components/User/Guilds";
 import DiscordCallback from "./components/Discord/DiscordCallback";
 import PrivateRoute from "./components/PrivateRoute";
 import Navbar from "./components/Navbar";

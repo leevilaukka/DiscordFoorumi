@@ -1,4 +1,4 @@
-import {REQUEST_GUILDS_ERROR,REQUEST_GUILDS,REQUEST_GUILDS_SUCCESS} from "../actions/guildActions";
+import {REQUEST_GUILDS, REQUEST_GUILDS_ERROR, REQUEST_GUILDS_SUCCESS} from "../actions/guildActions";
 
 const initialState = {
     loading: false,

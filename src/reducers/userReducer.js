@@ -1,4 +1,4 @@
-import {REQUEST_USER_ERROR,REQUEST_USER_SUCCESS,REQUEST_USER} from "../actions/userActions";
+import {REQUEST_USER, REQUEST_USER_ERROR, REQUEST_USER_SUCCESS} from "../actions/userActions";
 
 const initialState = {
     loading: false,

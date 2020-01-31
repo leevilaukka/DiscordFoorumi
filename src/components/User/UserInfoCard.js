@@ -1,7 +1,6 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styled from "styled-components";
 import {useSelector} from "react-redux";
-import ISO6391 from "iso-639-1";
 
 const UserWrapper = styled.div`
     padding: 1rem;
