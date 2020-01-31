@@ -3,7 +3,7 @@ import axios from 'axios';
 import styled from "styled-components";
 import {faDiscord} from '@fortawesome/free-brands-svg-icons';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import Button from "./Button";
+import Button from "../Button";
 
 const Login = () => {
     return (

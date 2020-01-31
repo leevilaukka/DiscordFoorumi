@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from "styled-components";
-import Login from "./Login";
+import Login from "./Discord/Login";
 import {useSelector} from "react-redux";
-import Logout from "./Logout";
+import Logout from "./Discord/Logout";
 import {Link} from "react-router-dom";
 
 const NavWrapper = styled.div`
@@ -72,7 +72,7 @@ const Navbar = () => {
             </STitle>
             <ProfileWrapper>
                 {loggedIn ? <SMessage>Tervetuloa, {user.username}</SMessage> : <SMessage>Kirjaudu sisään saakeli!</SMessage>}
-                {loggedIn && <Link to="/guilds"><SProfileImg src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.jpg`} alt=""/></Link>}
+                {loggedIn && <Link to="/profile"><SProfileImg src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.jpg`} alt=""/></Link>}
             </ProfileWrapper>
             {loggedIn ? <Logout/> : <Login/>}
         </NavWrapper>

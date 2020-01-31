@@ -2,13 +2,14 @@ import React, {useEffect} from 'react';
 import qs from 'querystring';
 import btoa from 'btoa'
 import axios from "axios";
+require('dotenv').config();
 
 const DiscordCallback = props => {
 
     useEffect(() => {
         const CLIENT_ID = "669505696991150085";
-        const CLIENT_SECRET = "Wp-0DVAF87vjpKfN25yQLKOUjbWJR2yW";
-        const redirect = encodeURIComponent(`http://localhost:3000/discord/callback`);
+        const CLIENT_SECRET = "cBvSc7LP5MYlF4cptOQE5zUrW_AaQJBb";
+        const redirect = encodeURIComponent(`http://localhost:3000/discord/login/callback`);
 
         const creds = btoa(`${CLIENT_ID}:${CLIENT_SECRET}`);
 

@@ -1,26 +1,26 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import AppWrapper from "./components/AppWrapper";
-import Login from "./components/Login";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import DiscordCallback from "./components/DiscordCallback";
-import Logout from "./components/Logout";
+
+// Redux
 import {useDispatch, useSelector} from "react-redux";
 import {login} from "./actions/authActions";
-import Guilds from "./components/Guilds";
-import Navbar from "./components/Navbar";
 import {getUser} from "./actions/userActions";
 import {getGuilds} from "./actions/guildActions";
-import NoAccess from "./components/NoAccess";
+
+// Components
+import AppWrapper from "./components/AppWrapper";
+import Guilds from "./components/User/Guilds";
+import DiscordCallback from "./components/Discord/DiscordCallback";
 import PrivateRoute from "./components/PrivateRoute";
+import Navbar from "./components/Navbar";
+import Profile from "./pages/Profile";
+import PayPalForm from "./components/PayPalForm";
+import RegisterCallback from "./components/Discord/RegisterCallback";
 
 
 function App() {
     const dispatch = useDispatch();
-    const loggedIn = useSelector(state => state.loggedIn);
-    const user = useSelector(state => state.user.user);
-
-
 
     useEffect(() => {
         const token = window.localStorage.getItem('dToken');
@@ -37,9 +37,11 @@ function App() {
                 <Route path="/">
                     <Navbar/>
                 </Route>
-                <PrivateRoute path="/guilds" component={Guilds}/>
+                <Route path="/paypal" component={PayPalForm}/>
+                <PrivateRoute path="/profile" component={Profile}/>
                 <Switch>
-                    <Route path="/discord/callback" component={DiscordCallback}/>
+                    <Route path="/discord/login/callback" component={DiscordCallback}/>
+                    <Route path="/discord/register/callback" component={RegisterCallback}/>
                 </Switch>
             </AppWrapper>
         </Router>

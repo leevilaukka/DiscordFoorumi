@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useSelector} from "react-redux";
 import styled from "styled-components";
 
@@ -61,6 +61,11 @@ const DefaultGuildImg = styled.div`
     }
 `;
 
+const Title = styled.h3`
+    min-width: 100%;
+    padding: 1rem;
+`;
+
 const Guilds = () => {
 
     const guilds = useSelector(state => state.guilds.guilds);
@@ -69,6 +74,7 @@ const Guilds = () => {
 
     return (
         <GuildWrapper>
+            <Title>Palvelimet</Title>
             {
                 guilds.map(guild => (
                     <GuildCard key={guild.id}>

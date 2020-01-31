@@ -1,6 +1,5 @@
 import React from 'react';
 import {Route} from "react-router-dom";
-import Guilds from "./Guilds";
 import NoAccess from "./NoAccess";
 import {useSelector} from "react-redux";
 
