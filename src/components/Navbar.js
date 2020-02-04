@@ -4,12 +4,14 @@ import Login from "./Discord/Login";
 import {useSelector} from "react-redux";
 import Logout from "./Discord/Logout";
 import {Link} from "react-router-dom";
+import BoardLinks from "./BoardLinks";
 
 const NavWrapper = styled.div`
     width: 100%;
     padding: 1rem;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     
     a {
         align-self: center;
@@ -60,7 +62,7 @@ const ProfileWrapper = styled.div`
 `;
 
 const Navbar = () => {
-    const user = useSelector(state => state.user.user);
+    const user = useSelector(state => state.discordUser.user);
     const loggedIn = useSelector(state => state.loggedIn);
 
     return (
@@ -75,6 +77,7 @@ const Navbar = () => {
                 {loggedIn && <Link to="/profile"><SProfileImg src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.jpg`} alt=""/></Link>}
             </ProfileWrapper>
             {loggedIn ? <Logout/> : <Login/>}
+            <BoardLinks/>
         </NavWrapper>
     );
 };

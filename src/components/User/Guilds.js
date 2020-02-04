@@ -1,17 +1,27 @@
 import React from 'react';
 import {useSelector} from "react-redux";
 import styled from "styled-components";
+import Loader from "../Loader";
 
 const GuildWrapper = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
 `;
 
 const GuildCard = styled.div`
     min-width: 25%;
     padding: 1rem;
     width: 25%;
+    
+    @media (max-width: 992px) {
+      min-width: 50%;
+    }
+    
+    @media (max-width: 576px) {
+      min-width: 100%;
+    }
     
     .inner {
         border-radius: 5px;
@@ -66,17 +76,22 @@ const Title = styled.h3`
     padding: 1rem;
 `;
 
+const ErrorMessage = styled.h2`
+    color: #ff0000;
+`;
+
 const Guilds = () => {
 
     const guilds = useSelector(state => state.guilds.guilds);
-
-
+    const loading = useSelector(state => state.guilds.loading);
+    const error = useSelector(state => state.guilds.error)
 
     return (
         <GuildWrapper>
             <Title>Palvelimet</Title>
+            {error && <ErrorMessage>{error.message}</ErrorMessage>}
             {
-                guilds.map(guild => (
+                loading ? <Loader/> : guilds.map(guild => (
                     <GuildCard key={guild.id}>
                         <div className="inner">
                             <p>{guild.name}</p>

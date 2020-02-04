@@ -25,11 +25,14 @@ export const requestUserError = error => {
     }
 };
 
-export const getUser = token => {
+export const getUser = userID => {
     return dispatch => {
-        dispatch(requestUser(token));
-        return axios.get(`https://foorumiapi.herokuapp.com/discord/user/${token}`)
+        dispatch(requestUser(userID));
+        return axios.get(`https://foorumiapi.herokuapp.com/discord/users/${userID}`)
             .then(res => dispatch(requestUserSuccess(res.data)))
             .catch(e => dispatch(requestUserError(e)))
     };
 };
+
+
+

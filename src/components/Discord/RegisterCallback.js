@@ -3,6 +3,8 @@ import btoa from "btoa";
 import qs from "querystring";
 import axios from "axios";
 import styled from "styled-components";
+import {useDispatch, useSelector} from "react-redux";
+import {getUser} from "../../actions/userActions";
 
 // Styled
 
@@ -42,7 +44,11 @@ const SInput = styled.input`
 const RegisterCallback = props => {
 
     let [alreadyUser,setAlreadyUser] = useState(false);
-    let [user,setUser] = useState({});
+
+    const dispatch = useDispatch();
+
+    const userError = useSelector(state => state.user.error);
+    const user = useSelector(state => state.user.user);
 
     useEffect(() => {
         const CLIENT_ID = "669505696991150085";
@@ -54,6 +60,8 @@ const RegisterCallback = props => {
         const url = qs.parse(props.location.search, { ignoreQueryPrefix: true });
         const code = url["?code"];
 
+
+
         const response = axios(`https://discordapp.com/api/oauth2/token?grant_type=authorization_code&code=${code}&redirect_uri=${redirect}`,
             {
                 method: 'POST',
@@ -64,29 +72,11 @@ const RegisterCallback = props => {
             .then(res => {
                 const token = res.data.access_token;
                 //window.localStorage.setItem('dToken', token);
-                const userresponse = axios.get(`https://foorumiapi.herokuapp.com/discord/user/${token}`)
-                    .then(res => {
-                        let user = res.data;
-                        console.log(user);
-                        axios.get(`https://foorumiapi.herokuapp.com/users/discord/${user.id}`)
-                            .then(res => {
-                               if(!res.data.status){
-                                   setUser(user);
-                                   axios.post('https://foorumiapi.herokuapp.com/users/', {
-                                       username: user.username,
-                                       email: user.email,
-                                       discordid: user.id,
-                                       avatar: user.avatar,
-                                       discriminator: user.discriminator,
-                                       locale: user.locale
-                                   })
-                               } else {
-                                   setAlreadyUser(true);
-                               }
-                            });
+                dispatch(getUser(token));
 
-                    })
-                    .catch(e => console.error(e))
+                if (userError !== "") {
+                    setAlreadyUser(true);
+                }
             })
             .catch(e => console.error(e));
     });

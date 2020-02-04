@@ -23,23 +23,41 @@ const UserInfo = styled.div`
 
 const UserImage = styled.img`
     border-radius: 50%;  
+    
+    @media (max-width: 450px) {
+        height: 64px;
+    }
 `;
 
 const UserName = styled.h1`
     align-self: center;
+    
+    @media (max-width: 600px) {
+        font-size: 1.2rem;
+    }
+    
+    @media (max-width: 450px) {
+        font-size: 0.9rem;
+    }
 `;
 
 const UserEmail = styled.p`
     color: #aaa;
     font-style: italic;
+    
+    @media (max-width: 450px) {
+        font-size: 0.8rem;
+    }
 `;
 
 const UserLocale = styled.p`
-    
+    @media (max-width: 450px) {
+        font-size: 0.8rem;
+    }
 `;
 
 const UserInfoCard = () => {
-    const user = useSelector(state => state.user.user);
+    const user = useSelector(state => state.discordUser.user);
 
     return (
         <UserWrapper>

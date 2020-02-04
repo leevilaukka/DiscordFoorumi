@@ -13,6 +13,7 @@ const SButton = styled.a`
     
     :hover {
         background-color: #2c2f33;
+        cursor: pointer;
     }
 `;
 
