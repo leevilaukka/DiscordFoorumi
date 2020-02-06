@@ -1,6 +1,5 @@
 import {REQUEST_BOARD,REQUEST_BOARD_ERROR,REQUEST_BOARD_SUCCESS} from "../actions/forumActions/boardActions";
 
-
 const initialState = {
     loading: true,
     error: "",
@@ -18,7 +17,7 @@ const boardReducer = (state = initialState, action) => {
             return {
                 error: "",
                 loading: false,
-                boards: action.response
+                board: action.response.result
             };
         case REQUEST_BOARD_ERROR:
             return {

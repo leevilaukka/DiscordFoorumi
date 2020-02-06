@@ -5,7 +5,7 @@ import guildReducer from "./guildReducer";
 import discordUserReducer from "./discordReducer";
 import postReducer from "./postReducer";
 import threadReducer from "./threadReducer";
-import allBoardsReducer from "./allBoardsReducer";
+import allBoardsReducer from "./allBoardsReducer"
 import boardReducer from "./boardReducer";
 
 const rootReducer = combineReducers({

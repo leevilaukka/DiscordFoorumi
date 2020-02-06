@@ -1,7 +1,7 @@
 import React from 'react';
 import {faDiscord} from '@fortawesome/free-brands-svg-icons';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import Button from "../Button";
+import Button from "../misc/Button";
 
 const Login = () => {
     return (

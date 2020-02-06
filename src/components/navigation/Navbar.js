@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from "styled-components";
-import Login from "./Discord/Login";
+import Login from "../discord/Login";
 import {useSelector} from "react-redux";
-import Logout from "./Discord/Logout";
+import Logout from "../discord/Logout";
 import {Link} from "react-router-dom";
-import BoardLinks from "./BoardLinks";
+import BoardLinks from "../boards/BoardLinks";
+import Spinner from "../misc/loader/Spinner";
+import logo from '../../assets/Discord-Logo-Color.png'
 
 const NavWrapper = styled.div`
     width: 100%;
@@ -63,6 +65,7 @@ const ProfileWrapper = styled.div`
 
 const Navbar = () => {
     const user = useSelector(state => state.discordUser.user);
+    const userLoading = useSelector(state => state.discordUser.loading);
     const loggedIn = useSelector(state => state.loggedIn);
 
     return (
@@ -73,8 +76,8 @@ const Navbar = () => {
                 </Link>
             </STitle>
             <ProfileWrapper>
-                {loggedIn ? <SMessage>Tervetuloa, {user.username}</SMessage> : <SMessage>Kirjaudu sisään saakeli!</SMessage>}
-                {loggedIn && <Link to="/profile"><SProfileImg src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.jpg`} alt=""/></Link>}
+                {loggedIn && !userLoading ? <SMessage>Tervetuloa, {user.username}</SMessage> : <SMessage>Kirjaudu sisään saakeli!</SMessage>}
+                {loggedIn && !userLoading ? <Link to="/profile"> {user.avatar ? <SProfileImg src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.jpg`} alt=""/> : <SProfileImg src={logo} alt=""/> } </Link> : <Spinner/>}
             </ProfileWrapper>
             {loggedIn ? <Logout/> : <Login/>}
             <BoardLinks/>

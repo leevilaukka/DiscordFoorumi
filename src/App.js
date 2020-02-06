@@ -13,15 +13,15 @@ import {getThreads} from "./actions/forumActions/threadActions";
 import {getAllBoards} from "./actions/forumActions/allBoardsActions";
 
 // Components
-import AppWrapper from "./components/AppWrapper";
-import DiscordCallback from "./components/Discord/DiscordCallback";
-import PrivateRoute from "./components/PrivateRoute";
-import Navbar from "./components/Navbar";
+import AppWrapper from "./components/misc/AppWrapper";
+import DiscordCallback from "./components/discord/DiscordCallback";
+import PrivateRoute from "./components/navigation/PrivateRoute";
+import Navbar from "./components/navigation/Navbar";
 import Profile from "./pages/Profile";
-import PayPalForm from "./components/PayPalForm";
-import RegisterCallback from "./components/Discord/RegisterCallback";
-import BoardLinks from "./components/BoardLinks";
-import Loader from "./components/Loader";
+import PayPalForm from "./components/payment/PayPalForm";
+import RegisterCallback from "./components/discord/RegisterCallback";
+import BoardLinks from "./components/boards/BoardLinks";
+import Loader from "./components/misc/loader/Loader";
 import Board from "./pages/Board";
 
 
@@ -33,9 +33,7 @@ function App() {
         if (token) {
             dispatch(login());
             dispatch(getDiscordUser(token));
-            dispatch(getGuilds(token));
             dispatch(getArticles());
-            dispatch(getThreads());
             dispatch(getAllBoards());
         }
     }, []);
@@ -46,10 +44,11 @@ function App() {
                 <Route path="/">
                     <Navbar/>
                 </Route>
+                <Route path="/loader" component={Loader}/>
                 <Route path="/paypal" component={PayPalForm}/>
                 <PrivateRoute path="/profile" component={Profile}/>
                 <Route path="/boards" component={BoardLinks}/>
-                <Route path="/b/:board" component={Board}/>
+                <Route path="/b/:board" exact component={Board}/>
                 <Switch>
                     <Route path="/discord/login/callback" component={DiscordCallback}/>
                     <Route path="/discord/register/callback" component={RegisterCallback}/>

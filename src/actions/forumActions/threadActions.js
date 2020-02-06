@@ -4,9 +4,10 @@ export const REQUEST_THREADS = "REQUEST_THREADS";
 export const REQUEST_THREADS_SUCCESS = "REQUEST_THREADS_SUCCESS";
 export const REQUEST_THREADS_ERROR = "REQUEST_THREADS_ERROR";
 
-export const requestThreads = () => {
+export const requestThreads = board => {
     return {
-        type: REQUEST_THREADS
+        type: REQUEST_THREADS,
+        board
     }
 };
 
@@ -24,10 +25,10 @@ export const requestThreadsError = error => {
     }
 };
 
-export const getThreads = () => {
+export const getThreads = board => {
     return dispatch => {
-        dispatch(requestThreads());
-        return axios.get(`https://foorumiapi.herokuapp.com/threads/`)
+        dispatch(requestThreads(board));
+        return axios.get(`https://foorumiapi.herokuapp.com/threads/board/${board}`)
             .then(res => dispatch(requestThreadsSuccess(res.data)))
             .catch(e => dispatch(requestThreadsError(e)))
     };

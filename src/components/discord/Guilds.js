@@ -1,7 +1,8 @@
-import React from 'react';
-import {useSelector} from "react-redux";
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from "react-redux";
 import styled from "styled-components";
-import Loader from "../Loader";
+import Loader from "../misc/loader/Loader";
+import {getGuilds} from "../../actions/guildActions";
 
 const GuildWrapper = styled.div`
     display: flex;
@@ -82,9 +83,16 @@ const ErrorMessage = styled.h2`
 
 const Guilds = () => {
 
+    const dispatch = useDispatch();
+    const token = window.localStorage.getItem('dToken');
+
+    useEffect(() =>{
+        dispatch(getGuilds(token));
+    }, []);
+
     const guilds = useSelector(state => state.guilds.guilds);
     const loading = useSelector(state => state.guilds.loading);
-    const error = useSelector(state => state.guilds.error)
+    const error = useSelector(state => state.guilds.error);
 
     return (
         <GuildWrapper>

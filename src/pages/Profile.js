@@ -1,6 +1,6 @@
 import React from 'react';
-import Guilds from "../components/User/Guilds";
-import UserInfoCard from "../components/User/UserInfoCard";
+import Guilds from "../components/discord/Guilds";
+import UserInfoCard from "../components/user/UserInfoCard";
 
 const Profile = () => {
     return (
