@@ -5,11 +5,8 @@ import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 // Redux
 import {useDispatch} from "react-redux";
 import {login} from "./actions/authActions";
-import {getUser} from "./actions/userActions";
-import {getGuilds} from "./actions/guildActions";
 import {getDiscordUser} from "./actions/discordActions";
 import {getArticles} from "./actions/forumActions/postActions";
-import {getThreads} from "./actions/forumActions/threadActions";
 import {getAllBoards} from "./actions/forumActions/allBoardsActions";
 
 // Components
