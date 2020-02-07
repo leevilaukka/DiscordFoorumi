@@ -1,35 +1,35 @@
 import axios from "axios";
 
-export const REQUEST_THREADS = "REQUEST_THREADS";
-export const REQUEST_THREADS_SUCCESS = "REQUEST_THREADS_SUCCESS";
-export const REQUEST_THREADS_ERROR = "REQUEST_THREADS_ERROR";
+export const REQUEST_THREAD = "REQUEST_THREADS";
+export const REQUEST_THREAD_SUCCESS = "REQUEST_THREADS_SUCCESS";
+export const REQUEST_THREAD_ERROR = "REQUEST_THREADS_ERROR";
 
-export const requestThreads = board => {
+export const requestThread = thread => {
     return {
-        type: REQUEST_THREADS,
-        board
+        type: REQUEST_THREAD,
+        thread
     }
 };
 
-export const requestThreadsSuccess = response => {
+export const requestThreadSuccess = response => {
     return {
-        type: REQUEST_THREADS_SUCCESS,
+        type: REQUEST_THREAD_SUCCESS,
         response
     }
 };
 
-export const requestThreadsError = error => {
+export const requestThreadError = error => {
     return {
-        type: REQUEST_THREADS_ERROR,
+        type: REQUEST_THREAD_ERROR,
         error
     }
 };
 
-export const getThreads = board => {
+export const getThread = thread => {
     return dispatch => {
-        dispatch(requestThreads(board));
-        return axios.get(`https://foorumiapi.herokuapp.com/threads/board/${board}`)
-            .then(res => dispatch(requestThreadsSuccess(res.data)))
-            .catch(e => dispatch(requestThreadsError(e)))
+        dispatch(requestThread(thread));
+        return axios.get(`https://foorumiapi.herokuapp.com/threads/uri/${thread}`)
+            .then(res => dispatch(requestThreadSuccess(res.data)))
+            .catch(e => dispatch(requestThreadError(e)))
     };
 };
