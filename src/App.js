@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import './App.css';
-import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 // Redux
 import {useDispatch} from "react-redux";
@@ -20,6 +20,7 @@ import RegisterCallback from "./components/discord/RegisterCallback";
 import BoardLinks from "./components/boards/BoardLinks";
 import Loader from "./components/misc/loader/Loader";
 import Board from "./pages/Board";
+import Thread from "./pages/Thread";
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
                 <PrivateRoute path="/profile" component={Profile}/>
                 <Route path="/boards" component={BoardLinks}/>
                 <Route path="/b/:board" exact component={Board}/>
+                <Route path="/b/:board/:thread" exact component={Thread}/>
                 <Switch>
                     <Route path="/discord/login/callback" component={DiscordCallback}/>
                     <Route path="/discord/register/callback" component={RegisterCallback}/>

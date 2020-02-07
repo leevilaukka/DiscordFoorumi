@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {PayPalButton} from 'react-paypal-button-v2'
 import styled from "styled-components";
+import axios from "axios";
 
 const SInput = styled.input`
     
@@ -25,9 +26,12 @@ const PayPalForm = () => {
     };
 
     const handlePayment = (details,data) => {
-          return(
-              <p>Maksu suoritettu!  Kiitti täst, ${details.payer.name.given_name} :-DDD</p>
-          )
+          axios.post('https://foorumiapi.herokuapp.com/mail/',{
+              to: details.payer.email_address,
+              subject: `Kiitti täst, ${details.payer.name.given_name} :-D`,
+              text: `Kiitti näist ${donation} eurost :--D`
+          });
+        console.log(details)
     };
 
     return (
@@ -37,7 +41,7 @@ const PayPalForm = () => {
                     type="number"
                     min="0.50"
                     step="0.50"
-                    max="2500"
+                    max="1000000"
                     value={donation}
                     onChange={donationValue}
                 />

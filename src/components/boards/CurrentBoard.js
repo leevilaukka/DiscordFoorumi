@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {getThreads} from "../../actions/forumActions/threadActions";
+import {getAllThreads} from "../../actions/forumActions/allThreadsActions";
 import ThreadList from "../threads/ThreadList";
 import Loader from "../misc/loader/Loader";
 
@@ -11,7 +11,7 @@ const CurrentBoard = props => {
     const loading = useSelector(state => state.board.loading);
 
     useEffect(() => {
-        dispatch(getThreads(board._id));
+        dispatch(getAllThreads(board._id));
     }, []);
 
 

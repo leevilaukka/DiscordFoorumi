@@ -4,9 +4,10 @@ import userReducer from "./userReducer";
 import guildReducer from "./guildReducer";
 import discordUserReducer from "./discordReducer";
 import postReducer from "./postReducer";
-import threadReducer from "./threadReducer";
+import allThreadsReducer from "./allThreadsReducer";
 import allBoardsReducer from "./allBoardsReducer"
 import boardReducer from "./boardReducer";
+import threadReducer from "./threadReducer";
 
 const rootReducer = combineReducers({
     loggedIn: authReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
     guilds: guildReducer,
     discordUser: discordUserReducer,
     articles: postReducer,
-    threads: threadReducer,
+    threads: allThreadsReducer,
+    thread: threadReducer,
     boards: allBoardsReducer,
     board: boardReducer
 });
