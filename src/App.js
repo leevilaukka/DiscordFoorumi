@@ -6,7 +6,6 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {useDispatch} from "react-redux";
 import {login} from "./actions/authActions";
 import {getDiscordUser} from "./actions/discordActions";
-import {getArticles} from "./actions/forumActions/postActions";
 import {getAllBoards} from "./actions/forumActions/allBoardsActions";
 
 // Components
@@ -31,7 +30,6 @@ function App() {
         if (token) {
             dispatch(login());
             dispatch(getDiscordUser(token));
-            dispatch(getArticles());
             dispatch(getAllBoards());
         }
     }, []);

@@ -12,7 +12,7 @@ const ThreadList = () => {
                 !loading
                 &&
                 threads.map(thread => (
-                    <Link to={`/b/${thread.board.boarduri}/${thread.threadUri}`}>{thread.title}</Link>
+                    <Link key={thread._id} to={`/b/${thread.board.boarduri}/${thread.threadUri}`}>{thread.title}</Link>
                 ))
             }
         </div>
