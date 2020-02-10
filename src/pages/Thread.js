@@ -3,6 +3,17 @@ import {getThread} from "../actions/forumActions/threadActions";
 import {useDispatch, useSelector} from "react-redux";
 import NoAccess from "../components/navigation/NoAccess";
 import Loader from "../components/misc/loader/Loader";
+import CurrentThread from "../components/threads/CurrentThread";
+import styled from "styled-components";
+
+const NoAccessContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    background-color: #2C2F33;
+    border-radius: 5px;
+    padding: 1rem;
+    align-items: center;
+`;
 
 const Thread = props => {
     const board = props.location.pathname.split("/")[2];
@@ -20,17 +31,20 @@ const Thread = props => {
     const threadCheck = () => {
         if(!loading){
             if(currentThread && board === currentThread.board.boarduri){
-                return <p> {currentThread.title} - {currentThread.body}</p>
+                return <CurrentThread/>
             } else {
-                return <NoAccess/>
-            }
+                return(
+                <NoAccessContainer>
+                    <NoAccess/>
+                </NoAccessContainer>
+                )}
         }else{
             return <Loader/>
         }
     };
 
     return (
-      threadCheck()
+        threadCheck()
     )
 };
 

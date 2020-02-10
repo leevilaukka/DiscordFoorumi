@@ -3,6 +3,16 @@ import {useDispatch, useSelector} from "react-redux";
 import {getAllThreads} from "../../actions/forumActions/allThreadsActions";
 import ThreadList from "../threads/ThreadList";
 import Loader from "../misc/loader/Loader";
+import styled from "styled-components";
+
+const BoardContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    background-color: #2C2F33;
+    border-radius: 5px;
+    padding: 1rem;
+    align-items: center;
+`;
 
 const CurrentBoard = props => {
     const dispatch = useDispatch();
@@ -17,7 +27,9 @@ const CurrentBoard = props => {
 
     return (
         <div>
-            <p>{board.title}</p>
+            <BoardContainer>
+                <p>{board.title}</p>
+            </BoardContainer>
             {
                 !loading
                 ?

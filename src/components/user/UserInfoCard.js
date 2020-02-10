@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
 import {useSelector} from "react-redux";
-import Button from "../misc/Button";
 import logo from "../../assets/Discord-Logo-Color.png"
 
 const UserWrapper = styled.div`
