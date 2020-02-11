@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from "styled-components";
 import Login from "../discord/Login";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import Logout from "../discord/Logout";
 import {Link} from "react-router-dom";
 import BoardLinks from "../boards/BoardLinks";
-import Spinner from "../misc/loader/Spinner";
 import logo from '../../assets/Discord-Logo-Color.png'
+import {getUser} from "../../actions/userActions";
 
 const NavWrapper = styled.div`
     width: 100%;
@@ -31,15 +31,15 @@ const STitle = styled.span`
     }
 `;
 
-const SLink = styled.div`
-    a{
-        text-decoration: none;
-        transition: color .2s;
-        :hover{
-            color: #7289da
-        }
-    }
-`;
+// const SLink = styled.div`
+//     a{
+//         text-decoration: none;
+//         transition: color .2s;
+//         :hover{
+//             color: #7289da
+//         }
+//     }
+// `;
 const SMessage = styled.p`
     
 `;
@@ -64,9 +64,18 @@ const ProfileWrapper = styled.div`
 `;
 
 const Navbar = () => {
+    const dispatch = useDispatch();
+
     const user = useSelector(state => state.discordUser.user);
     const userLoading = useSelector(state => state.discordUser.loading);
     const loggedIn = useSelector(state => state.loggedIn);
+
+
+    if(user.id) {
+        console.log(user);
+        dispatch(getUser(user.id));
+    }
+
 
     return (
         <NavWrapper>
@@ -77,7 +86,7 @@ const Navbar = () => {
             </STitle>
             <ProfileWrapper>
                 {loggedIn && !userLoading ? <SMessage>Tervetuloa, {user.username}</SMessage> : <SMessage>Kirjaudu sisään saakeli!</SMessage>}
-                {loggedIn && !userLoading ? <Link to="/profile"> {user.avatar ? <SProfileImg src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.jpg`} alt=""/> : <SProfileImg src={logo} alt=""/> } </Link> : <Spinner/>}
+                {loggedIn && !userLoading ? <Link to="/profile"> {user.avatar ? <SProfileImg src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.jpg`} alt=""/> : <SProfileImg src={logo} alt=""/> } </Link> : null}
             </ProfileWrapper>
             {loggedIn ? <Logout/> : <Login/>}
             <BoardLinks/>

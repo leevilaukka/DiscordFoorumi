@@ -88,7 +88,7 @@ const Guilds = () => {
 
     useEffect(() =>{
         dispatch(getGuilds(token));
-    }, []);
+    }, [dispatch, token]);
 
     const guilds = useSelector(state => state.guilds.guilds);
     const loading = useSelector(state => state.guilds.loading);

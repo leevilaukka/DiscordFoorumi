@@ -3,7 +3,7 @@ import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 // Redux
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {login} from "./actions/authActions";
 import {getDiscordUser} from "./actions/discordActions";
 import {getAllBoards} from "./actions/forumActions/allBoardsActions";
@@ -20,19 +20,24 @@ import BoardLinks from "./components/boards/BoardLinks";
 import Loader from "./components/misc/loader/Loader";
 import Board from "./pages/Board";
 import Thread from "./pages/Thread";
+import {getUser} from "./actions/userActions";
 
 
 function App() {
     const dispatch = useDispatch();
+
+    const discorduser = useSelector(state => state.discordUser.user);
+    const discorduserloading = useSelector(state => state.discordUser.loading);
 
     useEffect(() => {
         const token = window.localStorage.getItem('dToken');
         if (token) {
             dispatch(login());
             dispatch(getDiscordUser(token));
-            dispatch(getAllBoards());
         }
-    }, []);
+        dispatch(getAllBoards());
+    }, [dispatch]);
+
 
     return (
         <Router>

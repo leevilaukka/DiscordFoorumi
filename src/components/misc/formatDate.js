@@ -4,5 +4,8 @@ export const formatDate = date => {
     const month = newDate.getMonth();
     const year = newDate.getFullYear();
 
-    return (`${day}.${month}.${year}`);
+    const hour = newDate.getHours();
+    const min = newDate.getMinutes();
+
+    return (`${day}.${month}.${year} ${hour}:${min}`);
 };

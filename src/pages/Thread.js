@@ -23,7 +23,7 @@ const Thread = props => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getThread(threaduri))
-    }, [threaduri]);
+    }, [threaduri, dispatch]);
 
     const currentThread = useSelector(state => state.thread.thread);
     const loading = useSelector(state => state.thread.loading);

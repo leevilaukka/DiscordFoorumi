@@ -62,7 +62,7 @@ const RegisterCallback = props => {
 
 
 
-        const response = axios(`https://discordapp.com/api/oauth2/token?grant_type=authorization_code&code=${code}&redirect_uri=${redirect}`,
+        axios(`https://discordapp.com/api/oauth2/token?grant_type=authorization_code&code=${code}&redirect_uri=${redirect}`,
             {
                 method: 'POST',
                 headers: {

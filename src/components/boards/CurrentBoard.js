@@ -4,6 +4,7 @@ import {getAllThreads} from "../../actions/forumActions/allThreadsActions";
 import ThreadList from "../threads/ThreadList";
 import Loader from "../misc/loader/Loader";
 import styled from "styled-components";
+import CreateThread from "../forms/CreateThread";
 
 const BoardContainer = styled.div`
     display: flex;
@@ -22,7 +23,7 @@ const CurrentBoard = props => {
 
     useEffect(() => {
         dispatch(getAllThreads(board._id));
-    }, []);
+    }, [dispatch, board._id]);
 
 
     return (
@@ -37,7 +38,7 @@ const CurrentBoard = props => {
                     :
                     <Loader/>
             }
-
+        <CreateThread/>
         </div>
     );
 };

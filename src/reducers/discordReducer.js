@@ -1,7 +1,7 @@
 import {REQUEST_DISCORD_USER,REQUEST_DISCORD_USER_ERROR,REQUEST_DISCORD_USER_SUCCESS} from "../actions/discordActions";
 
 const initialState = {
-    loading: false,
+    loading: true,
     error: "",
     user: {},
     token: ""

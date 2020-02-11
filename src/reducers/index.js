@@ -7,7 +7,8 @@ import postReducer from "./postReducer";
 import allThreadsReducer from "./allThreadsReducer";
 import allBoardsReducer from "./allBoardsReducer"
 import boardReducer from "./boardReducer";
-import threadReducer from "./threadReducer";
+import threadReducer from "./getThreadReducer";
+import postThreadReducer from "./postThreadReducer";
 
 const rootReducer = combineReducers({
     loggedIn: authReducer,
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
     threads: allThreadsReducer,
     thread: threadReducer,
     boards: allBoardsReducer,
-    board: boardReducer
+    board: boardReducer,
+    postThread: postThreadReducer
 });
 
 export default rootReducer;

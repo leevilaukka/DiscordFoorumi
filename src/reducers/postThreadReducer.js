@@ -1,26 +1,26 @@
-import {REQUEST_THREAD,REQUEST_THREAD_ERROR,REQUEST_THREAD_SUCCESS} from "../actions/forumActions/threadActions";
+import {REQUEST_CREATE_THREAD,REQUEST_CREATE_THREAD_ERROR,REQUEST_CREATE_THREAD_SUCCESS} from "../actions/forumActions/threadActions";
 
 
 const initialState = {
     loading: true,
     error: "",
-    thread: {},
+    response: {}
 };
 
-const ThreadReducer = (state = initialState, action) => {
+const postThreadReducer = (state = initialState, action) => {
     switch (action.type) {
-        case REQUEST_THREAD:
+        case REQUEST_CREATE_THREAD:
             return{
                 ...state,
                 loading: true
             };
-        case REQUEST_THREAD_SUCCESS:
+        case REQUEST_CREATE_THREAD_SUCCESS:
             return {
                 error: "",
                 loading: false,
-                thread: action.response.result
+                response: action.response
             };
-        case REQUEST_THREAD_ERROR:
+        case REQUEST_CREATE_THREAD_ERROR:
             return {
                 ...state,
                 loading: false,
@@ -30,4 +30,4 @@ const ThreadReducer = (state = initialState, action) => {
             return state
     }
 };
-export default ThreadReducer;
+export default postThreadReducer;

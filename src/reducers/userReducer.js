@@ -3,8 +3,7 @@ import {REQUEST_USER, REQUEST_USER_ERROR, REQUEST_USER_SUCCESS} from "../actions
 const initialState = {
     loading: false,
     error: "",
-    user: {},
-    token: ""
+    user: {}
 };
 
 const userReducer = (state = initialState, action) => {
@@ -13,14 +12,13 @@ const userReducer = (state = initialState, action) => {
             return{
                 ...state,
                 loading: true,
-                token: action.token
             };
         case REQUEST_USER_SUCCESS:
             return {
                 ...state,
                 error: "",
                 loading: false,
-                user: action.response
+                user: action.response.response
             };
         case REQUEST_USER_ERROR:
             return {

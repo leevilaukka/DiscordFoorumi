@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {getBoard} from "../actions/forumActions/boardActions";
 import NoAccess from "../components/navigation/NoAccess";
@@ -21,7 +21,7 @@ const Board = props => {
 
     useEffect(() => {
         dispatch(getBoard(board))
-    }, [board]);
+    }, [board, dispatch]);
 
     const currentBoard = useSelector(state => state.board.board);
     const loading = useSelector(state => state.board.loading);
