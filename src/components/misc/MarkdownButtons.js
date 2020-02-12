@@ -8,8 +8,8 @@ const MarkdownWrapper = styled.div`
     flex-direction: row;
     width: 100%;
     border: 1px solid #7289da;
+    border-bottom: 1px dashed #666 ;
     border-radius: 5px 5px 0 0;
-    border-bottom-color: #666;
     background-color: #23272a;
     padding: 5px;
 `;
@@ -37,16 +37,16 @@ const MarkdownButton = styled.button`
 const MarkdownButtons = () => {
     return (
         <MarkdownWrapper>
-            <MarkdownButton tabIndex="-1">
+            <MarkdownButton tabIndex="-1" title="Lihavoi">
                 <Icon icon={faBold}/>
             </MarkdownButton >
-            <MarkdownButton tabIndex="-1">
+            <MarkdownButton tabIndex="-1" title="Kursivoi">
                 <Icon icon={faItalic}/>
             </MarkdownButton>
-            <MarkdownButton tabIndex="-1">
+            <MarkdownButton tabIndex="-1" title="Yliviivaa">
                 <Icon icon={faStrikethrough}/>
             </MarkdownButton>
-            <MarkdownButton tabIndex="-1">
+            <MarkdownButton tabIndex="-1" title="Otsikko">
                 <Icon icon={faHeading}/>
             </MarkdownButton>
         </MarkdownWrapper>
