@@ -1,26 +1,26 @@
-import {REQUEST_THREAD,REQUEST_THREAD_ERROR,REQUEST_THREAD_SUCCESS} from "../actions/forumActions/threadActions";
+import {REQUEST_DELETE_THREAD,REQUEST_DELETE_THREAD_ERROR,REQUEST_DELETE_THREAD_SUCCESS} from "../actions/forumActions/threadActions";
 
 
 const initialState = {
     loading: true,
     error: "",
-    thread: {},
+    response: {}
 };
 
-const getThreadReducer = (state = initialState, action) => {
+const deleteThreadReducer = (state = initialState, action) => {
     switch (action.type) {
-        case REQUEST_THREAD:
+        case REQUEST_DELETE_THREAD:
             return{
                 ...state,
                 loading: true
             };
-        case REQUEST_THREAD_SUCCESS:
+        case REQUEST_DELETE_THREAD_SUCCESS:
             return {
                 error: "",
                 loading: false,
-                thread: action.response.result
+                response: action.response
             };
-        case REQUEST_THREAD_ERROR:
+        case REQUEST_DELETE_THREAD_ERROR:
             return {
                 ...state,
                 loading: false,
@@ -30,4 +30,4 @@ const getThreadReducer = (state = initialState, action) => {
             return state
     }
 };
-export default getThreadReducer;
+export default deleteThreadReducer;

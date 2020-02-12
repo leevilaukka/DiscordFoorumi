@@ -16,6 +16,7 @@ const GuildCard = styled.div`
     padding: 1rem;
     width: 25%;
     
+    
     @media (max-width: 992px) {
       min-width: 50%;
     }
@@ -23,7 +24,9 @@ const GuildCard = styled.div`
     @media (max-width: 576px) {
       min-width: 100%;
     }
-    
+    .owner {
+      background-color: gold;
+    }
     .inner {
         border-radius: 5px;
         background-color: #2c2f33;
@@ -93,6 +96,7 @@ const Guilds = () => {
     const guilds = useSelector(state => state.guilds.guilds);
     const loading = useSelector(state => state.guilds.loading);
     const error = useSelector(state => state.guilds.error);
+
 
     return (
         <GuildWrapper>
