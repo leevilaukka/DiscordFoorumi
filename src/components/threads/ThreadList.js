@@ -5,7 +5,7 @@ import styled from "styled-components";
 import {formatDate} from "../misc/formatDate";
 import ReactMarkdown from "react-markdown";
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
-import {faTrashAlt} from "@fortawesome/free-solid-svg-icons";
+import {faTrashAlt, faEdit} from "@fortawesome/free-solid-svg-icons";
 import {deleteThread} from "../../actions/forumActions/threadActions";
 
 const ThreadListWrapper = styled.div`
@@ -31,6 +31,26 @@ const Trash = styled.button`
    
    :hover svg {
       color: #AA0000;
+   }
+`;
+
+const EditButton = styled.button`
+   border:none;
+   background: none;
+   padding: 5px;
+   
+   :hover{
+      cursor: pointer;
+   }
+   
+   svg {
+      color: #7289da;
+      transition: color .2s;
+      pointer-events: none;
+   }
+   
+   :hover svg {
+      color: #00AA00;
    }
 `;
 
@@ -99,18 +119,27 @@ const ThreadList = () => {
                             <p> {thread.user ? `${thread.user.username} - ` : "Anonyymi - "}{formatDate(thread.date)}</p>
                         </ThreadUserWrapper>
                             <ReactMarkdown children={thread.body}/>
-                        <ActionsWrapper>
+
                             {
                                 (thread.user._id === userId)
                                 &&
-                                <Trash
-                                    value={thread._id}
-                                    onClick={handleDelete}
-                                >
-                                    <Icon icon={faTrashAlt} size="lg"/>
-                                </Trash>
+                                <ActionsWrapper>
+                                    <EditButton
+                                        title="Muokkaa"
+                                    >
+                                        <Icon icon={faEdit} size="lg"/>
+                                    </EditButton>
+                                    <Trash
+                                        title="Poista"
+                                        value={thread._id}
+                                        onClick={handleDelete}
+                                    >
+                                        <Icon icon={faTrashAlt} size="lg"/>
+                                    </Trash>
+                                </ActionsWrapper>
                             }
-                        </ActionsWrapper>
+
+
                     </ThreadListItem>
                 ))
             }

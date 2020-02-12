@@ -35,6 +35,8 @@ const BodyTextArea = styled.textarea`
     padding: 1rem;
     margin-bottom: 1rem;
     border-top: none;
+    min-height:55px;
+    
 `;
 
 const SubmitButton = styled.button`

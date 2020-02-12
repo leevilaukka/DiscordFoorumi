@@ -1,6 +1,6 @@
 import React from 'react';
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
-import {faBold, faHeading, faItalic, faStrikethrough, faUnderline} from "@fortawesome/free-solid-svg-icons";
+import {faBold, faHeading, faItalic, faStrikethrough} from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 
 const MarkdownWrapper = styled.div`
@@ -37,19 +37,16 @@ const MarkdownButton = styled.button`
 const MarkdownButtons = () => {
     return (
         <MarkdownWrapper>
-            <MarkdownButton>
+            <MarkdownButton tabIndex="-1">
                 <Icon icon={faBold}/>
-            </MarkdownButton>
-            <MarkdownButton>
+            </MarkdownButton >
+            <MarkdownButton tabIndex="-1">
                 <Icon icon={faItalic}/>
             </MarkdownButton>
-            <MarkdownButton>
+            <MarkdownButton tabIndex="-1">
                 <Icon icon={faStrikethrough}/>
             </MarkdownButton>
-            <MarkdownButton>
-                <Icon icon={faUnderline}/>
-            </MarkdownButton>
-            <MarkdownButton>
+            <MarkdownButton tabIndex="-1">
                 <Icon icon={faHeading}/>
             </MarkdownButton>
         </MarkdownWrapper>
