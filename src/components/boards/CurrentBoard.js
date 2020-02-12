@@ -13,6 +13,7 @@ const BoardContainer = styled.div`
     border-radius: 5px;
     padding: 1rem;
     align-items: center;
+    margin-bottom: 1rem;
 `;
 
 const CurrentBoard = props => {
@@ -30,6 +31,7 @@ const CurrentBoard = props => {
         <div>
             <BoardContainer>
                 <p>{board.title}</p>
+                <CreateThread/>
             </BoardContainer>
             {
                 !loading
@@ -38,7 +40,7 @@ const CurrentBoard = props => {
                     :
                     <Loader/>
             }
-        <CreateThread/>
+
         </div>
     );
 };

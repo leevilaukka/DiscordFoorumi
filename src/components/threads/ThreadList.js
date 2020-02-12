@@ -3,11 +3,11 @@ import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 import {formatDate} from "../misc/formatDate";
+import ReactMarkdown from "react-markdown";
 
 const ThreadListWrapper = styled.div`
   display: flex;
   align-items: center;
-  padding: 1rem;
   flex-wrap: wrap;
 `;
 
@@ -22,19 +22,24 @@ const ThreadListItem = styled.div`
   margin-bottom: 1rem;
   border-radius: 5px;
   
-  a:visited{
-    color: #FFF;
+  a{
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #7289da;
   }
-`;
-
-const ThreadText = styled.div`
-   width: 100%;
 `;
 
 const ThreadUserWrapper = styled.div`
    display: flex;
-   margin-left: auto;
    flex-direction: row;
+   margin-bottom: 1rem;
+   
+   p {
+    color: #888;
+    font-size: 0.8rem;
+    font-style: italic;
+   }
 `;
 
 const ThreadList = () => {
@@ -47,13 +52,12 @@ const ThreadList = () => {
                 &&
                 threads.map(thread => (
                     <ThreadListItem key={thread._id}>
-                        <Link key={thread._id} to={`/b/${thread.board.boarduri}/${thread.threadUri}`}>{thread.title}</Link>
-                        <ThreadText>{thread.body}</ThreadText>
+                        <Link to={`/b/${thread.board.boarduri}/${thread.threadUri}`}>{thread.title}</Link>
                         <ThreadUserWrapper>
-                           <p> {thread.user ? `${thread.user.username} - ` : "Anonyymi - "}{formatDate(thread.date)}</p>
+                            <p> {thread.user ? `${thread.user.username} - ` : "Anonyymi - "}{formatDate(thread.date)}</p>
                         </ThreadUserWrapper>
+                            <ReactMarkdown children={thread.body}/>
                     </ThreadListItem>
-
                 ))
             }
         </ThreadListWrapper>

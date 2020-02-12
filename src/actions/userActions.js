@@ -4,6 +4,12 @@ export const REQUEST_USER = "REQUEST_USER";
 export const REQUEST_USER_SUCCESS = "REQUEST_USER_SUCCESS";
 export const REQUEST_USER_ERROR = "REQUEST_USER_ERROR";
 
+export const REQUEST_CREATE_USER = "REQUEST_CREATE_USER";
+export const REQUEST_CREATE_USER_SUCCESS = "REQUEST_CREATE_USER_SUCCESS";
+export const REQUEST_CREATE_USER_ERROR = "REQUEST_CREATE_USER_ERROR";
+
+
+//GET user actions
 export const requestUser = discordID => {
     return {
         type: REQUEST_USER,
@@ -31,6 +37,36 @@ export const getUser = discordID => {
         return axios.get(`https://foorumiapi.herokuapp.com/users/discord/users/${discordID}`)
             .then(res => dispatch(requestUserSuccess(res.data)))
             .catch(e => dispatch(requestUserError(e)))
+    };
+};
+
+//POST user actions
+export const requestCreateUser = () => {
+    return {
+        type: REQUEST_CREATE_USER
+    }
+};
+
+export const requestCreateUserSuccess = response => {
+    return {
+        type: REQUEST_CREATE_USER_SUCCESS,
+        response
+    }
+};
+
+export const requestCreateUserError = error => {
+    return {
+        type: REQUEST_CREATE_USER_ERROR,
+        error
+    }
+};
+
+export const postUser = userdata => {
+    return dispatch => {
+        dispatch(requestCreateUser());
+        return axios.post(`https://foorumiapi.herokuapp.com/users/`, userdata)
+            .then(res => dispatch(requestCreateUserSuccess(res.data)))
+            .catch(e => dispatch(requestCreateUserError(e)))
     };
 };
 

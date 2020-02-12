@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {getThread, postThread} from "../../actions/forumActions/threadActions";
-import {getAllThreads} from "../../actions/forumActions/allThreadsActions";
+import { postThread} from "../../actions/forumActions/threadActions";
 
 const CreateThread = () => {
     const user = useSelector(state => state.user.user);

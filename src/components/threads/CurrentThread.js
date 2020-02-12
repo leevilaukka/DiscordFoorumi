@@ -6,6 +6,7 @@ import styled from "styled-components";
 import {formatDate} from "../misc/formatDate";
 import Articles from "../articles/Articles";
 import {Link} from "react-router-dom";
+import ReactMarkdown from "react-markdown";
 
 const ThreadWrapper = styled.div`
   display: flex;
@@ -38,11 +39,22 @@ const ThreadInfo = styled.div`
 `;
 
 const ThreadTitle = styled.h2`
-   
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #7289da;
 `;
 
 const ThreadBody = styled.p`
   font-size: 1.2rem;
+`;
+
+const Timestamp = styled.div`
+  margin-bottom: 1rem;
+    p {
+        color: #888;
+        font-size: 0.8rem;
+        font-style: italic;    
+    }
 `;
 
 const CurrentThread = () => {
@@ -64,10 +76,11 @@ const CurrentThread = () => {
                 <ThreadTitle>
                     {currentThread.title}
                 </ThreadTitle>
+                <Timestamp><p>{currentThread.user ? currentThread.user.username : "Anonyymi"} - {formatDate(currentThread.date)}</p></Timestamp>
                 <ThreadBody>
-                    {currentThread.body}
+                    <ReactMarkdown children={currentThread.body}/>
                 </ThreadBody>
-                {currentThread.user ? currentThread.user.username : "Anonyymi"} - {formatDate(currentThread.date)}
+
             </ThreadInfo>
             {
                 loading ? <Loader/> : <Articles/>

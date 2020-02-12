@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from "styled-components";
 import Login from "../discord/Login";
 import {useDispatch, useSelector} from "react-redux";
@@ -6,7 +6,7 @@ import Logout from "../discord/Logout";
 import {Link} from "react-router-dom";
 import BoardLinks from "../boards/BoardLinks";
 import logo from '../../assets/Discord-Logo-Color.png'
-import {getUser} from "../../actions/userActions";
+import {getUser, postUser} from "../../actions/userActions";
 
 const NavWrapper = styled.div`
     width: 100%;
@@ -69,13 +69,25 @@ const Navbar = () => {
     const user = useSelector(state => state.discordUser.user);
     const userLoading = useSelector(state => state.discordUser.loading);
     const loggedIn = useSelector(state => state.loggedIn);
+    const forumuser = useSelector(state => state.user.user);
 
-
-    if(user.id) {
-        console.log(user);
-        dispatch(getUser(user.id));
-    }
-
+    useEffect(() => {
+        if(user.id) {
+            dispatch(getUser(user.id));
+        }
+    },[userLoading, dispatch, user.id]);
+    useEffect(() => {
+        if(!forumuser){
+            dispatch(postUser({
+                username:user.username,
+                email:user.email,
+                discordid:user.id,
+                avatar:user.avatar,
+                discriminator:user.discriminator,
+                locale:user.locale
+            }))
+        }
+    }, [dispatch,forumuser, user]);
 
     return (
         <NavWrapper>
