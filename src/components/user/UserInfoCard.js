@@ -57,6 +57,7 @@ const UserName = styled.h1`
 `;
 const UserDisc = styled.span`
     font-size: 1.2rem;
+    color: gray;
 `;
 const UserEmail = styled.p`
     color: #aaa;
