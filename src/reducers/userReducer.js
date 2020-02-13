@@ -1,4 +1,5 @@
 import {REQUEST_USER, REQUEST_USER_ERROR, REQUEST_USER_SUCCESS} from "../actions/userActions";
+import {LOGOUT} from "../actions/authActions";
 
 const initialState = {
     loading: false,
@@ -27,6 +28,8 @@ const userReducer = (state = initialState, action) => {
                 loading: false,
                 error: action.error
             };
+        case LOGOUT:
+            return initialState;
         default:
             return state
     }

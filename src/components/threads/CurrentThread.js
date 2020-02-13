@@ -7,6 +7,7 @@ import {formatDate} from "../misc/formatDate";
 import Articles from "../articles/Articles";
 import {Link} from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+import logo from "../../assets/Discord-Logo-Color.png";
 
 const ThreadWrapper = styled.div`
   display: flex;
@@ -49,6 +50,9 @@ const ThreadBody = styled.p`
 `;
 
 const Timestamp = styled.div`
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
   margin-bottom: 1rem;
     p {
         color: #888;
@@ -56,9 +60,15 @@ const Timestamp = styled.div`
         font-style: italic;    
     }
 `;
+const ThreadAvatar = styled.img`
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 5px;
+`;
+
 
 const CurrentThread = () => {
-    const currentThread = useSelector(state => state.thread.thread);
+    const currentThread = useSelector(state => state.threads.thread);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -76,9 +86,9 @@ const CurrentThread = () => {
                 <ThreadTitle>
                     {currentThread.title}
                 </ThreadTitle>
-                <Timestamp><p>{currentThread.user ? currentThread.user.username : "Anonyymi"} - {formatDate(currentThread.date)}</p></Timestamp>
+                <Timestamp><ThreadAvatar src={ currentThread.user.avatar ? `https://cdn.discordapp.com/avatars/${currentThread.user.discordid}/${currentThread.user.avatar}.jpg` : logo}/><p>{currentThread.user ? currentThread.user.username : "Anonyymi"} - {formatDate(currentThread.date)}</p></Timestamp>
                 <ThreadBody>
-                    <ReactMarkdown children={currentThread.body}/>
+                    <ReactMarkdown children={currentThread.body} escapeHtml={false}/>
                 </ThreadBody>
 
             </ThreadInfo>

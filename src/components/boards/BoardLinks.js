@@ -16,9 +16,8 @@ const SBoard = styled.div`
     
     
     a {
-        color: #ffffff;
+        color: #FFF;
         text-decoration: none;
-        background-color: #7289da;
         padding: 5px;
         border-radius: 5px;
     }

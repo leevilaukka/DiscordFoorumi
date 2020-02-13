@@ -2,6 +2,7 @@ import React from 'react';
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
 import {faBold, faHeading, faItalic, faStrikethrough} from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
+import {faMarkdown} from "@fortawesome/free-brands-svg-icons";
 
 const MarkdownWrapper = styled.div`
     display: flex;
@@ -12,6 +13,7 @@ const MarkdownWrapper = styled.div`
     border-radius: 5px 5px 0 0;
     background-color: #23272a;
     padding: 5px;
+    align-items: center;
 `;
 
 const MarkdownButton = styled.button`
@@ -24,6 +26,19 @@ const MarkdownButton = styled.button`
    }
    
    svg {
+      color: #7289da;
+      transition: color .2s;
+   }
+   
+   :hover svg {
+      color: #FFF;
+      
+   }
+`;
+const MarkdownIcon = styled.a`
+    margin-left: auto;
+    margin-right: 5px;
+    svg {
       color: #7289da;
       transition: color .2s;
    }
@@ -49,8 +64,11 @@ const MarkdownButtons = () => {
             <MarkdownButton tabIndex="-1" title="Otsikko">
                 <Icon icon={faHeading}/>
             </MarkdownButton>
+            <MarkdownIcon href="https://en.wikipedia.org/wiki/Markdown" target="_blank" title="Tämä tekstikenttä tukee Markdownia! Lue lisää klikkaamalla." tabIndex="-1">
+                <Icon icon={faMarkdown}/>
+            </MarkdownIcon>
         </MarkdownWrapper>
     );
 };
-
+//TODO Markdown ohjesivu
 export default MarkdownButtons;

@@ -66,12 +66,16 @@ const CreateThread = () => {
 
     const handleSubmit =  e => {
         e.preventDefault();
-         dispatch(postThread({
-            title,
-            body,
-            user: user._id,
-            board: board._id
-         }));
+        if(title && body) {
+            dispatch(postThread({
+                title,
+                body,
+                user: user._id,
+                board: board._id
+            }, user));
+        } else {
+            alert("Täytä kaikki kentät!")
+        }
     };
 
     return (

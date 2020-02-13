@@ -14,6 +14,10 @@ const BoardContainer = styled.div`
     padding: 1rem;
     align-items: center;
     margin-bottom: 1rem;
+    
+    p{
+        margin-bottom: 1rem;
+    }
 `;
 
 const CurrentBoard = props => {
@@ -21,7 +25,6 @@ const CurrentBoard = props => {
 
     const board = useSelector(state => state.board.board);
     const loading = useSelector(state => state.board.loading);
-    const threads = useSelector(state => state.threads);
 
     useEffect(() => {
         dispatch(getAllThreads(board._id));

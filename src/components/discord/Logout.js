@@ -2,6 +2,9 @@ import React from 'react';
 import {useDispatch} from "react-redux";
 import {logout} from "../../actions/authActions";
 import Button from "../misc/Button";
+import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
+import {faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
+
 
 const Logout = () => {
     const dispatch = useDispatch();
@@ -12,7 +15,7 @@ const Logout = () => {
     };
 
     return (
-        <Button onClick={handleLogout}>Kirjaudu ulos</Button>
+        <Button onClick={handleLogout}>Kirjaudu ulos <Icon icon={faSignOutAlt}/></Button>
     );
 };
 

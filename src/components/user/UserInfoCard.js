@@ -55,7 +55,9 @@ const UserName = styled.h1`
         
     }
 `;
-
+const UserDisc = styled.span`
+    font-size: 1.2rem;
+`;
 const UserEmail = styled.p`
     color: #aaa;
     font-style: italic;
@@ -110,7 +112,7 @@ const UserInfoCard = () => {
                     {user.avatar ? <UserImage src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.jpg`}/> : <UserImage src={logo} alt=""/>}
                 </UserImageWrapper>
                 <UserInfo>
-                    <UserName>{user.username}#{user.discriminator}</UserName>
+                    <UserName>{user.username}<UserDisc>#{user.discriminator}</UserDisc></UserName>
                     <UserEmail>{user.email}</UserEmail>
                     <UserLocale>{user.locale}</UserLocale>
                 </UserInfo>

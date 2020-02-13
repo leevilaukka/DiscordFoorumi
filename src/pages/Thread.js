@@ -19,14 +19,13 @@ const Thread = props => {
     const board = props.location.pathname.split("/")[2];
     const threaduri = props.location.pathname.split("/")[3];
 
-
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getThread(threaduri))
     }, [threaduri, dispatch]);
 
-    const currentThread = useSelector(state => state.thread.thread);
-    const loading = useSelector(state => state.thread.loading);
+    const currentThread = useSelector(state => state.threads.thread);
+    const loading = useSelector(state => state.threads.singleThreadLoading);
 
     const threadCheck = () => {
         if(!loading){

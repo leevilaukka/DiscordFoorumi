@@ -18,3 +18,27 @@ h4{
   padding: 0;
   box-sizing: border-box;
 }
+
+ul,
+ol {
+  margin-left: 1.2rem;
+}
+
+
+spoiler {
+  position: relative;
+}
+​,
+spoiler::after {
+  content: "";
+  background-color: #000;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  border-radius: 5px;
+}
+​,
+spoiler:hover::after{
+  background: none;
+}

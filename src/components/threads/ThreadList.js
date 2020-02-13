@@ -1,12 +1,14 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 import {formatDate} from "../misc/formatDate";
 import ReactMarkdown from "react-markdown";
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
-import {faTrashAlt, faEdit} from "@fortawesome/free-solid-svg-icons";
+import {faTrashAlt, faPen} from "@fortawesome/free-solid-svg-icons";
 import {deleteThread} from "../../actions/forumActions/threadActions";
+import Loader from "../misc/loader/Loader";
+import logo from "../../assets/Discord-Logo-Color.png"
 
 const ThreadListWrapper = styled.div`
   display: flex;
@@ -85,12 +87,19 @@ const ThreadUserWrapper = styled.div`
    display: flex;
    flex-direction: row;
    margin-bottom: 1rem;
+   align-items: center;
    
    p {
     color: #888;
     font-size: 0.8rem;
     font-style: italic;
    }
+`;
+
+const ThreadAvatar = styled.img`
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 5px;
 `;
 
 
@@ -106,19 +115,21 @@ const ThreadList = () => {
     const threads = useSelector(state => state.threads.threads);
     const loading = useSelector(state => state.threads.loading);
     const userId = useSelector(state => state.user.user._id);
+    const createdLoading = useSelector(state => state.threads.createLoading);
 
     return (
         <ThreadListWrapper>
             {
                 !loading
-                &&
+                ?
                 threads.map(thread => (
                     <ThreadListItem key={thread._id}>
                         <Link to={`/b/${thread.board.boarduri}/${thread.threadUri}`}>{thread.title}</Link>
                         <ThreadUserWrapper>
-                            <p> {thread.user ? `${thread.user.username} - ` : "Anonyymi - "}{formatDate(thread.date)}</p>
+                            <ThreadAvatar src={ thread.user.avatar ? `https://cdn.discordapp.com/avatars/${thread.user.discordid}/${thread.user.avatar}.jpg` : logo}/>
+                            <p> {!createdLoading ? thread.user ? ` ${thread.user.username} - ` : "Anonyymi - " : "Ladataan..."}{formatDate(thread.date)}</p>
                         </ThreadUserWrapper>
-                            <ReactMarkdown children={thread.body}/>
+                            <ReactMarkdown children={thread.body} escapeHtml={false}/>
 
                             {
                                 (thread.user._id === userId)
@@ -126,8 +137,9 @@ const ThreadList = () => {
                                 <ActionsWrapper>
                                     <EditButton
                                         title="Muokkaa"
+                                        onClick={() => alert("Maksa kultatili saakelin sossurotta!")}
                                     >
-                                        <Icon icon={faEdit} size="lg"/>
+                                        <Icon icon={faPen} size="lg"/>
                                     </EditButton>
                                     <Trash
                                         title="Poista"
@@ -142,6 +154,8 @@ const ThreadList = () => {
 
                     </ThreadListItem>
                 ))
+                    :
+                    <Loader/>
             }
         </ThreadListWrapper>
     );
