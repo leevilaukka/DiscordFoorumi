@@ -9,7 +9,7 @@ import {faTrashAlt, faPen} from "@fortawesome/free-solid-svg-icons";
 import {deleteThread} from "../../actions/forumActions/threadActions";
 import Loader from "../misc/loader/Loader";
 import logo from "../../assets/Discord-Logo-Color.png"
-import htmlParser from 'react-markdown/plugins/html-parser';
+import YoutubeEmbed from "../misc/YoutubeEmbed";
 
 const ThreadListWrapper = styled.div`
   display: flex;
@@ -127,12 +127,14 @@ const ThreadList = () => {
                     <ThreadListItem key={thread._id}>
                         <Link to={`/b/${thread.board.boarduri}/${thread.threadUri}`}>{thread.title}</Link>
                         <ThreadUserWrapper>
-                            <ThreadAvatar src={ thread.user.avatar ? `https://cdn.discordapp.com/avatars/${thread.user.discordid}/${thread.user.avatar}.jpg` : logo}/>
+                            <ThreadAvatar src={ thread.user ? `https://cdn.discordapp.com/avatars/${thread.user.discordid}/${thread.user.avatar}.jpg` : logo}/>
                             <p> {!createdLoading ? thread.user ? ` ${thread.user.username} - ` : "Anonyymi - " : "Ladataan..."}{formatDate(thread.date)}</p>
                         </ThreadUserWrapper>
-                            <ReactMarkdown children={thread.body}/>
-
+                        {thread.embed && <YoutubeEmbed videoID={thread.embed}/>}
+                            <ReactMarkdown children={thread.body} escapeHtml={false}/>
                             {
+                                // TODO: Check for anonym IP address to allow edit/delete
+                                thread.user &&
                                 (thread.user._id === userId)
                                 &&
                                 <ActionsWrapper>

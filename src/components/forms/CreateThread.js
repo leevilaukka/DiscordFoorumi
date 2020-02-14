@@ -24,6 +24,22 @@ const TitleInput = styled.input`
     margin-bottom: 1rem;
 `;
 
+const EmbedInput = styled.input`
+    background-color: #23272a;
+    border: #7289da solid 1px;
+    border-radius: 5px;
+    color: #FFF;
+    width: 100%;
+    outline: none;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    
+    :invalid{
+      border-color: #FF0000;
+    }
+`;
+
+
 const BodyTextArea = styled.textarea`
     background-color: #23272a;
     border: #7289da solid 1px;
@@ -63,29 +79,58 @@ const CreateThread = () => {
 
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
+    const [embed, setEmbed] = useState("");
+
+    const youTubeRegEx = "^(http(s)?://)?((w){3}.)?youtu(be|.be)?(.com)?/.+";
 
     const handleSubmit =  e => {
         e.preventDefault();
+
         if(title && body) {
-            dispatch(postThread({
-                title,
-                body,
-                user: user._id,
-                board: board._id
-            }, user));
+            let newPost = {};
+
+            if (embed) {
+                newPost = {
+                    title,
+                    body,
+                    user: user._id,
+                    board: board._id,
+                    embed
+                }
+            } else {
+                newPost = {
+                    title,
+                    body,
+                    user: user._id,
+                    board: board._id
+                }
+            }
+            dispatch(postThread(newPost, user, board));
+            setEmbed("");
+            setBody("");
+            setTitle("");
         } else {
             alert("Täytä kaikki kentät!")
         }
+
     };
 
     return (
         <div>
-            <SForm>
+            <SForm onSubmit={handleSubmit}>
                 <TitleInput
                     type="text"
                     onChange={e => setTitle(e.target.value)}
                     value={title}
                     placeholder="Langan otsikko"
+                />
+                <EmbedInput
+                    type="text"
+                    onChange={e => setEmbed(e.target.value)}
+                    value={embed}
+                    placeholder="YouTube-upote"
+                    pattern={youTubeRegEx}
+                    title="Anna kelvollinen YouTube-linkki!"
                 />
                 <MarkdownButtons/>
                 <BodyTextArea
@@ -94,7 +139,7 @@ const CreateThread = () => {
                     value={body}
                     placeholder="Teksti"
                 />
-                <SubmitButton type="submit" onClick={handleSubmit}>Luo lanka</SubmitButton>
+                <SubmitButton type="submit">Luo lanka</SubmitButton>
             </SForm>
         </div>
     );

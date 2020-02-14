@@ -17,6 +17,7 @@ const BoardContainer = styled.div`
     
     p{
         margin-bottom: 1rem;
+        font-weight: bold;
     }
 `;
 

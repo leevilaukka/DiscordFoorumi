@@ -79,7 +79,8 @@ const threadReducer = (state = initialState, action) => {
             let updatedThreads = [
                 {
                     ...action.response.thread,
-                    user: action.author
+                    user: action.author,
+                    board: action.board
                 },
                 ...state.threads
             ];

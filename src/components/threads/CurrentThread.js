@@ -8,6 +8,7 @@ import Articles from "../articles/Articles";
 import {Link} from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import logo from "../../assets/Discord-Logo-Color.png";
+import YoutubeEmbed from "../misc/YoutubeEmbed";
 
 const ThreadWrapper = styled.div`
   display: flex;
@@ -89,6 +90,7 @@ const CurrentThread = () => {
                 <Timestamp><ThreadAvatar src={ currentThread.user.avatar ? `https://cdn.discordapp.com/avatars/${currentThread.user.discordid}/${currentThread.user.avatar}.jpg` : logo}/><p>{currentThread.user ? currentThread.user.username : "Anonyymi"} - {formatDate(currentThread.date)}</p></Timestamp>
                 <ThreadBody>
                     <ReactMarkdown children={currentThread.body} escapeHtml={false}/>
+                    {currentThread.embed && <YoutubeEmbed videoID={currentThread.embed}/>}
                 </ThreadBody>
 
             </ThreadInfo>

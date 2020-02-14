@@ -51,11 +51,12 @@ export const requestCreateThread = () => {
     }
 };
 
-export const requestCreateThreadSuccess = (response, author) => {
+export const requestCreateThreadSuccess = (response, author, board) => {
     return {
         type: REQUEST_CREATE_THREAD_SUCCESS,
         response,
-        author
+        author,
+        board
     }
 };
 
@@ -66,11 +67,11 @@ export const requestCreateThreadError = error => {
     }
 };
 
-export const postThread = (threadData, author) => {
+export const postThread = (threadData, author, board) => {
     return dispatch => {
         dispatch(requestCreateThread());
         return axios.post(`https://foorumiapi.herokuapp.com/threads/`, threadData)
-            .then(res => dispatch(requestCreateThreadSuccess(res.data, author)))
+            .then(res => dispatch(requestCreateThreadSuccess(res.data, author, board)))
             .catch(e => dispatch(requestCreateThreadError(e)))
     };
 };
