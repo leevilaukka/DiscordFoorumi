@@ -1,6 +1,6 @@
 import React from 'react';
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
-import {faBold, faHeading, faItalic, faStrikethrough} from "@fortawesome/free-solid-svg-icons";
+import {faBold, faHeading, faItalic, faStrikethrough, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import {faMarkdown} from "@fortawesome/free-brands-svg-icons";
 
@@ -63,6 +63,9 @@ const MarkdownButtons = () => {
             </MarkdownButton>
             <MarkdownButton tabIndex="-1" title="Otsikko">
                 <Icon icon={faHeading}/>
+            </MarkdownButton>
+            <MarkdownButton tabIndex="-1" title="Spoiler">
+                <Icon icon={faEyeSlash}/>
             </MarkdownButton>
             <MarkdownIcon href="https://en.wikipedia.org/wiki/Markdown" target="_blank" title="Tämä tekstikenttä tukee Markdownia! Lue lisää klikkaamalla." tabIndex="-1">
                 <Icon icon={faMarkdown}/>

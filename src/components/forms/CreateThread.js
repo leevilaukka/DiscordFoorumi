@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import { postThread} from "../../actions/forumActions/threadActions";
+import {postThread} from "../../actions/forumActions/threadActions";
 import styled from "styled-components";
 import MarkdownButtons from "../misc/MarkdownButtons";
 
@@ -87,7 +87,7 @@ const CreateThread = () => {
         e.preventDefault();
 
         if(title && body) {
-            let newPost = {};
+            let newPost;
 
             if (embed) {
                 newPost = {

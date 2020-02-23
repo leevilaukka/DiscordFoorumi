@@ -56,6 +56,10 @@ const ThumbnailWrapper = styled.div`
 const CloseButton = styled.div`
   margin-left: auto;
   
+  :hover {
+    cursor: pointer;
+  }
+  
   svg {
     margin-right: .5rem;
   }
