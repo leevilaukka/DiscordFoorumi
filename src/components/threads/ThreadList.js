@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
@@ -10,6 +10,7 @@ import {deleteThread} from "../../actions/forumActions/threadActions";
 import Loader from "../misc/loader/Loader";
 import logo from "../../assets/Discord-Logo-Color.png"
 import YoutubeEmbed from "../misc/YoutubeEmbed";
+import EditThread from "../forms/EditThread";
 
 const ThreadListWrapper = styled.div`
   display: flex;
@@ -105,13 +106,56 @@ const ThreadAvatar = styled.img`
 
 
 
+
 const ThreadList = () => {
+
+    let [open, setOpen] = useState(false);
+
+    let [title, setTitle] = useState("");
+    let [body, setBody] = useState("");
+    let [embed, setEmbed] = useState("");
+    let [threadId, setThreadId] = useState("");
+
     const dispatch = useDispatch();
 
     const handleDelete = e => {
         // const threadId = e.target.value;
         dispatch(deleteThread(e.target.value));
     };
+
+    const handleEdit = e => {
+        e.preventDefault();
+        setOpen(!open);
+        const id = e.target.getAttribute("data");
+
+        const threadData = threads.find(thread => {
+            return thread._id === id;
+        });
+        setTitle(threadData.title);
+        setBody(threadData.body);
+        setEmbed(threadData.embed);
+        setThreadId(id);
+    };
+
+    const toggleEdit = e => {
+        if(e.target.id === "backdrop"){
+            setOpen(!open);
+            setTitle("");
+            setBody("");
+            setEmbed("");
+            setThreadId("");
+        }
+    };
+
+    const afterSubmit = () => {
+        setOpen(!open);
+        setTitle("");
+        setBody("");
+        setEmbed("");
+        setThreadId("");
+    };
+
+
 
     const threads = useSelector(state => state.threads.threads);
     const loading = useSelector(state => state.threads.loading);
@@ -139,8 +183,9 @@ const ThreadList = () => {
                                 &&
                                 <ActionsWrapper>
                                     <EditButton
+                                        data={thread._id}
                                         title="Muokkaa"
-                                        onClick={() => alert("Maksa kultatili saakelin sossurotta!")}
+                                        onClick={handleEdit}
                                     >
                                         <Icon icon={faPen} size="lg"/>
                                     </EditButton>
@@ -158,7 +203,17 @@ const ThreadList = () => {
                     :
                     <Loader/>
             }
+            <EditThread
+                open={open}
+                title={title}
+                body={body}
+                embed={embed}
+                threadId={threadId}
+                onBackdropClick={toggleEdit}
+                afterSubmit={afterSubmit}
+            />
         </ThreadListWrapper>
+
     );
 };
 

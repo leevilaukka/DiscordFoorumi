@@ -1,16 +1,23 @@
 import {
-    REQUEST_CREATE_THREAD, REQUEST_CREATE_THREAD_ERROR, REQUEST_CREATE_THREAD_SUCCESS,
-    REQUEST_DELETE_THREAD, REQUEST_DELETE_THREAD_ERROR, REQUEST_DELETE_THREAD_SUCCESS,
+    REQUEST_CREATE_THREAD,
+    REQUEST_CREATE_THREAD_ERROR,
+    REQUEST_CREATE_THREAD_SUCCESS,
+    REQUEST_DELETE_THREAD,
+    REQUEST_DELETE_THREAD_ERROR,
+    REQUEST_DELETE_THREAD_SUCCESS,
+    REQUEST_EDIT_THREAD,
+    REQUEST_EDIT_THREAD_ERROR,
+    REQUEST_EDIT_THREAD_SUCCESS,
     REQUEST_THREAD,
     REQUEST_THREAD_ERROR,
     REQUEST_THREAD_SUCCESS
 } from "../actions/forumActions/threadActions";
+
 import {
     REQUEST_ALL_THREADS,
     REQUEST_ALL_THREADS_ERROR,
     REQUEST_ALL_THREADS_SUCCESS
 } from "../actions/forumActions/allThreadsActions";
-
 
 const initialState = {
     loading: true,
@@ -118,8 +125,50 @@ const threadReducer = (state = initialState, action) => {
                 loading: false,
                 error: action.error
             };
+
+            // EDIT THREADS
+        case REQUEST_EDIT_THREAD:
+            return{
+                ...state,
+                loading: true
+            };
+        case REQUEST_EDIT_THREAD_SUCCESS:
+            const threadData = state.threads.find(thread => {
+                return thread._id === action.threadId;
+            });
+
+            let updatedThread = {
+                ...threadData,
+                title: action.response.new.title,
+                body: action.response.new.body,
+                embed: action.response.new.embed
+            };
+
+            const filteredThreads = state.threads.filter(singleThread => {
+                return singleThread._id !== action.threadId;
+            });
+
+            const newThreadArray = [
+                updatedThread,
+                ...filteredThreads
+            ];
+
+            console.log(newThreadArray);
+            return {
+                ...state,
+                threads: newThreadArray,
+                error: "",
+                loading: false
+            };
+        case REQUEST_EDIT_THREAD_ERROR:
+            return {
+                ...state,
+                loading: false,
+                error: action.error
+            };
         default:
             return state
     }
+
 };
 export default threadReducer;

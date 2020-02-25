@@ -12,6 +12,9 @@ export const REQUEST_DELETE_THREAD = "REQUEST_DELETE_THREAD";
 export const REQUEST_DELETE_THREAD_SUCCESS = "REQUEST_DELETE_THREAD_SUCCESS";
 export const REQUEST_DELETE_THREAD_ERROR = "REQUEST_DELETE_THREAD_ERROR";
 
+export const REQUEST_EDIT_THREAD = "REQUEST_EDIT_THREAD";
+export const REQUEST_EDIT_THREAD_SUCCESS = "REQUEST_EDIT_THREAD_SUCCESS";
+export const REQUEST_EDIT_THREAD_ERROR = "REQUEST_EDIT_THREAD_ERROR";
 // GET Actions
 export const requestThread = thread => {
     return {
@@ -105,5 +108,37 @@ export const deleteThread = threadId => {
         return axios.delete(`https://foorumiapi.herokuapp.com/threads/${threadId}`)
             .then(res => dispatch(requestDeleteThreadSuccess(res.data, threadId)))
             .catch(e => dispatch(requestDeleteThreadError(e)))
+    };
+};
+
+// Edit Actions
+
+export const requestEditThread = () => {
+    return {
+        type: REQUEST_EDIT_THREAD
+    }
+};
+
+export const requestEditThreadSuccess = (response, threadId) => {
+    return {
+        type: REQUEST_EDIT_THREAD_SUCCESS,
+        response,
+        threadId
+    }
+};
+
+export const requestEditThreadError = error => {
+    return {
+        type: REQUEST_EDIT_THREAD_ERROR,
+        error
+    }
+};
+
+export const editThread = (threadId, threadData) => {
+    return dispatch => {
+        dispatch(requestEditThread());
+        return axios.put(`https://foorumiapi.herokuapp.com/threads/${threadId}`, threadData)
+            .then(res => dispatch(requestEditThreadSuccess(res.data, threadId)))
+            .catch(e => dispatch(requestEditThreadError(e)))
     };
 };

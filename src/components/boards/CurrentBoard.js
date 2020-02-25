@@ -34,10 +34,16 @@ const CurrentBoard = props => {
 
     return (
         <div>
-            <BoardContainer>
-                <p>{board.title}</p>
-                <CreateThread/>
-            </BoardContainer>
+            {
+                !loading
+                ?
+                <BoardContainer>
+                    <p>{board.title}</p>
+                    <CreateThread/>
+                </BoardContainer>
+                :
+                <Loader/>
+            }
             {
                 !loading
                 ?
