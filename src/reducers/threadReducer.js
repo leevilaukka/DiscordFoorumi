@@ -98,6 +98,7 @@ const threadReducer = (state = initialState, action) => {
                 createLoading: false,
                 error: action.error
             };
+
             // ALL THREADS
         case REQUEST_ALL_THREADS:
             return{

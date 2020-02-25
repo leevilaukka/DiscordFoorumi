@@ -45,7 +45,6 @@ const MarkdownIcon = styled.a`
    
    :hover svg {
       color: #FFF;
-      
    }
 `;
 

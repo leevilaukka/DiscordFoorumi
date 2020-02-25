@@ -55,6 +55,7 @@ const ThumbnailWrapper = styled.div`
 
 const CloseButton = styled.div`
   margin-left: auto;
+  color: #ffffff;
   
   :hover {
     cursor: pointer;

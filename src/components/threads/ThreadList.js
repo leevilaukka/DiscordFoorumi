@@ -2,7 +2,7 @@ import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
-import {formatDate} from "../misc/formatDate";
+import {formatDate} from "../../helpers/formatDate";
 import ReactMarkdown from "react-markdown";
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
 import {faTrashAlt, faPen} from "@fortawesome/free-solid-svg-icons";
@@ -127,7 +127,7 @@ const ThreadList = () => {
                     <ThreadListItem key={thread._id}>
                         <Link to={`/b/${thread.board.boarduri}/${thread.threadUri}`}>{thread.title}</Link>
                         <ThreadUserWrapper>
-                            <ThreadAvatar src={ thread.user ? `https://cdn.discordapp.com/avatars/${thread.user.discordid}/${thread.user.avatar}.jpg` : logo}/>
+                            <ThreadAvatar src={ thread.user ? thread.user.avatar ? `https://cdn.discordapp.com/avatars/${thread.user.discordid}/${thread.user.avatar}.jpg` : logo : logo}/>
                             <p> {!createdLoading ? thread.user ? ` ${thread.user.username} - ` : "Anonyymi - " : "Ladataan..."}{formatDate(thread.date)}</p>
                         </ThreadUserWrapper>
                         {thread.embed && <YoutubeEmbed videoID={thread.embed}/>}
@@ -153,8 +153,6 @@ const ThreadList = () => {
                                     </Trash>
                                 </ActionsWrapper>
                             }
-
-
                     </ThreadListItem>
                 ))
                     :

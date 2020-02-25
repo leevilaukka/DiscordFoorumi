@@ -5,7 +5,7 @@ import Button from "../misc/Button";
 
 const Login = () => {
     return (
-        <Button href="https://foorumiapi.herokuapp.com/discord/login">
+        <Button href="https://foorumiapi.herokuapp.com/discord/login/githubio">
             <FontAwesomeIcon icon={faDiscord} /> Kirjaudu Discordilla
         </Button>
     );

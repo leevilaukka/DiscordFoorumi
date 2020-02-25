@@ -3,12 +3,13 @@ import {useDispatch, useSelector} from "react-redux";
 import {getArticles} from "../../actions/forumActions/postActions";
 import Loader from "../misc/loader/Loader";
 import styled from "styled-components";
-import {formatDate} from "../misc/formatDate";
+import {formatDate} from "../../helpers/formatDate";
 import Articles from "../articles/Articles";
 import {Link} from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import logo from "../../assets/Discord-Logo-Color.png";
 import YoutubeEmbed from "../misc/YoutubeEmbed";
+import CreateArticle from "../forms/CreateArticle";
 
 const ThreadWrapper = styled.div`
   display: flex;
@@ -46,9 +47,13 @@ const ThreadTitle = styled.h2`
     color: #7289da;
 `;
 
-const ThreadBody = styled.p`
+const ThreadBody = styled.div`
   font-size: 1.2rem;
 `;
+
+const ThreadBodyText = styled.div`
+  margin-bottom: 1rem;
+`
 
 const Timestamp = styled.div`
   margin-top: 5px;
@@ -87,13 +92,13 @@ const CurrentThread = () => {
                 <ThreadTitle>
                     {currentThread.title}
                 </ThreadTitle>
-                    <Timestamp><ThreadAvatar src={ currentThread.user ? `https://cdn.discordapp.com/avatars/${currentThread.user.discordid}/${currentThread.user.avatar}.jpg` : logo}/><p>{currentThread.user ? currentThread.user.username : "Anonyymi"} - {formatDate(currentThread.date)}</p></Timestamp>
+                    <Timestamp><ThreadAvatar src={ currentThread.user ? currentThread.user.avatar ? `https://cdn.discordapp.com/avatars/${currentThread.user.discordid}/${currentThread.user.avatar}.jpg` : logo : logo}/><p>{currentThread.user ? currentThread.user.username : "Anonyymi"} - {formatDate(currentThread.date)}</p></Timestamp>
                 <ThreadBody>
-                    <ReactMarkdown children={currentThread.body} escapeHtml={false}/>
+                    <ThreadBodyText><ReactMarkdown children={currentThread.body} escapeHtml={false}/></ThreadBodyText>
                     {currentThread.embed && <YoutubeEmbed videoID={currentThread.embed}/>}
                 </ThreadBody>
-
             </ThreadInfo>
+            <CreateArticle/>
             {
                 loading ? <Loader/> : <Articles/>
             }
