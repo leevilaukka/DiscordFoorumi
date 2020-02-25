@@ -25,12 +25,12 @@ const PayPalForm = () => {
         setDonation(e.target.value)
     };
 
-    const handlePayment = (details,data) => {
-          axios.post('https://foorumiapi.herokuapp.com/mail/',{
-              to: details.payer.email_address,
-              subject: `Kiitti täst, ${details.payer.name.given_name} :-D`,
-              text: `Kiitti näist ${donation} eurost :--D`
-          });
+    const handlePayment = (details, data) => {
+        axios.post('https://foorumiapi.herokuapp.com/mail/', {
+            to: details.payer.email_address,
+            subject: `Kiitti täst, ${details.payer.name.given_name} :-D`,
+            text: `Kiitti näist ${donation} eurost :--D`
+        });
         console.log(details)
     };
 

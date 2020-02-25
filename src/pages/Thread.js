@@ -28,16 +28,17 @@ const Thread = props => {
     const loading = useSelector(state => state.threads.singleThreadLoading);
 
     const threadCheck = () => {
-        if(!loading){
-            if(currentThread && board === currentThread.board.boarduri){
+        if (!loading) {
+            if (currentThread && board === currentThread.board.boarduri) {
                 return <CurrentThread/>
             } else {
-                return(
-                <NoAccessContainer>
-                    <NoAccess/>
-                </NoAccessContainer>
-                )}
-        }else{
+                return (
+                    <NoAccessContainer>
+                        <NoAccess/>
+                    </NoAccessContainer>
+                )
+            }
+        } else {
             return <Loader/>
         }
     };

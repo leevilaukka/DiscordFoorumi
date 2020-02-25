@@ -70,7 +70,7 @@ const CreateArticle = () => {
 
     const youTubeRegEx = "^(http(s)?://)?((w){3}.)?youtu(be|.be)?(.com)?/.+";
 
-    const handleSubmit =  e => {
+    const handleSubmit = e => {
         e.preventDefault();
 
         if (body) {

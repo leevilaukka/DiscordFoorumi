@@ -107,6 +107,8 @@ const EditThread = props => {
     let [body, setBody] = useState("");
     let [embed, setEmbed] = useState("");
 
+    const youTubeRegEx = "^(http(s)?://)?((w){3}.)?youtu(be|.be)?(.com)?/.+";
+
     const submitEdit = e => {
         e.preventDefault();
         const updatedThread = {
@@ -114,42 +116,43 @@ const EditThread = props => {
             body,
             embed
         };
-            dispatch(editThread(props.threadId, updatedThread))
-                .then(props.afterSubmit);
+        dispatch(editThread(props.threadId, updatedThread))
+            .then(props.afterSubmit);
     };
 
     return (
         <>
             {
                 props.open &&
-                    <EditFormBackdrop id="backdrop" onClick={props.onBackdropClick}>
-                        <EditFormWrapper>
-                            <h3>Muokkaa lankaa</h3>
-                            <EditForm onSubmit={submitEdit}>
-                                <TitleInput
-                                    type="text"
-                                    placeholder="Langan otsikko"
-                                    defaultValue={props.title}
-                                    onChange={e => setTitle(e.target.value)}
-                                />
-                                <EmbedInput
-                                    type="text"
-                                    placeholder="YouTube-upote"
-                                    title="Anna kelvollinen YouTube-linkki!"
-                                    defaultValue={props.embed}
-                                    onChange={e => setEmbed(e.target.value)}
-                                />
-                                <MarkdownButtons/>
-                                <BodyTextArea
-                                    rows="6"
-                                    placeholder="Teksti"
-                                    defaultValue={props.body}
-                                    onChange={e => setBody(e.target.value)}
-                                />
-                                <SubmitButton type="submit">Tallenna</SubmitButton>
-                            </EditForm>
-                        </EditFormWrapper>
-                    </EditFormBackdrop>
+                <EditFormBackdrop id="backdrop" onClick={props.onBackdropClick}>
+                    <EditFormWrapper>
+                        <h3>Muokkaa lankaa</h3>
+                        <EditForm onSubmit={submitEdit}>
+                            <TitleInput
+                                type="text"
+                                placeholder="Langan otsikko"
+                                defaultValue={props.title}
+                                onChange={e => setTitle(e.target.value)}
+                            />
+                            <EmbedInput
+                                type="text"
+                                placeholder="YouTube-upote"
+                                title="Anna kelvollinen YouTube-linkki!"
+                                defaultValue={props.embed}
+                                onChange={e => setEmbed(e.target.value)}
+                                pattern={youTubeRegEx}
+                            />
+                            <MarkdownButtons/>
+                            <BodyTextArea
+                                rows="6"
+                                placeholder="Teksti"
+                                defaultValue={props.body}
+                                onChange={e => setBody(e.target.value)}
+                            />
+                            <SubmitButton type="submit">Tallenna</SubmitButton>
+                        </EditForm>
+                    </EditFormWrapper>
+                </EditFormBackdrop>
             }
         </>
     );

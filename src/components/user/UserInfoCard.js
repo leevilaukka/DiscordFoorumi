@@ -110,7 +110,9 @@ const UserInfoCard = () => {
         <UserWrapper>
             <UserCard>
                 <UserImageWrapper>
-                    {user.avatar ? <UserImage src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.jpg`}/> : <UserImage src={logo} alt=""/>}
+                    {user.avatar ?
+                        <UserImage src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.jpg`}/> :
+                        <UserImage src={logo} alt=""/>}
                 </UserImageWrapper>
                 <UserInfo>
                     <UserName>{user.username}<UserDisc>#{user.discriminator}</UserDisc></UserName>
@@ -122,7 +124,7 @@ const UserInfoCard = () => {
                 </ButtonWrapper>
             </UserCard>
         </UserWrapper>
-        );
+    );
 };
 
 export default UserInfoCard;

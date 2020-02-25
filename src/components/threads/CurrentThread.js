@@ -92,7 +92,10 @@ const CurrentThread = () => {
                 <ThreadTitle>
                     {currentThread.title}
                 </ThreadTitle>
-                    <Timestamp><ThreadAvatar src={ currentThread.user ? currentThread.user.avatar ? `https://cdn.discordapp.com/avatars/${currentThread.user.discordid}/${currentThread.user.avatar}.jpg` : logo : logo}/><p>{currentThread.user ? currentThread.user.username : "Anonyymi"} - {formatDate(currentThread.date)}</p></Timestamp>
+                <Timestamp><ThreadAvatar
+                    src={currentThread.user ? currentThread.user.avatar ? `https://cdn.discordapp.com/avatars/${currentThread.user.discordid}/${currentThread.user.avatar}.jpg` : logo : logo}/>
+                    <p>{currentThread.user ? currentThread.user.username : "Anonyymi"} - {formatDate(currentThread.date)}</p>
+                </Timestamp>
                 <ThreadBody>
                     <ThreadBodyText><ReactMarkdown children={currentThread.body} escapeHtml={false}/></ThreadBodyText>
                     {currentThread.embed && <YoutubeEmbed videoID={currentThread.embed}/>}

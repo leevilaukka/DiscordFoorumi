@@ -105,8 +105,6 @@ const ThreadAvatar = styled.img`
 `;
 
 
-
-
 const ThreadList = () => {
 
     let [open, setOpen] = useState(false);
@@ -138,7 +136,7 @@ const ThreadList = () => {
     };
 
     const toggleEdit = e => {
-        if(e.target.id === "backdrop"){
+        if (e.target.id === "backdrop") {
             setOpen(!open);
             setTitle("");
             setBody("");
@@ -156,7 +154,6 @@ const ThreadList = () => {
     };
 
 
-
     const threads = useSelector(state => state.threads.threads);
     const loading = useSelector(state => state.threads.loading);
     const userId = useSelector(state => state.user.user._id);
@@ -166,15 +163,16 @@ const ThreadList = () => {
         <ThreadListWrapper>
             {
                 !loading
-                ?
-                threads.map(thread => (
-                    <ThreadListItem key={thread._id}>
-                        <Link to={`/b/${thread.board.boarduri}/${thread.threadUri}`}>{thread.title}</Link>
-                        <ThreadUserWrapper>
-                            <ThreadAvatar src={ thread.user ? thread.user.avatar ? `https://cdn.discordapp.com/avatars/${thread.user.discordid}/${thread.user.avatar}.jpg` : logo : logo}/>
-                            <p> {!createdLoading ? thread.user ? ` ${thread.user.username} - ` : "Anonyymi - " : "Ladataan..."}{formatDate(thread.date)}</p>
-                        </ThreadUserWrapper>
-                        {thread.embed && <YoutubeEmbed videoID={thread.embed}/>}
+                    ?
+                    threads.map(thread => (
+                        <ThreadListItem key={thread._id}>
+                            <Link to={`/b/${thread.board.boarduri}/${thread.threadUri}`}>{thread.title}</Link>
+                            <ThreadUserWrapper>
+                                <ThreadAvatar
+                                    src={thread.user ? thread.user.avatar ? `https://cdn.discordapp.com/avatars/${thread.user.discordid}/${thread.user.avatar}.jpg` : logo : logo}/>
+                                <p> {!createdLoading ? thread.user ? ` ${thread.user.username} - ` : "Anonyymi - " : "Ladataan..."}{formatDate(thread.date)}</p>
+                            </ThreadUserWrapper>
+                            {thread.embed && <YoutubeEmbed videoID={thread.embed}/>}
                             <ReactMarkdown children={thread.body} escapeHtml={false}/>
                             {
                                 // TODO: Check for anonym IP address to allow edit/delete
@@ -198,8 +196,8 @@ const ThreadList = () => {
                                     </Trash>
                                 </ActionsWrapper>
                             }
-                    </ThreadListItem>
-                ))
+                        </ThreadListItem>
+                    ))
                     :
                     <Loader/>
             }

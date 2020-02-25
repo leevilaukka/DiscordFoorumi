@@ -1,4 +1,4 @@
-import {REQUEST_CREATE_USER,REQUEST_CREATE_USER_ERROR,REQUEST_CREATE_USER_SUCCESS} from "../actions/userActions";
+import {REQUEST_CREATE_USER, REQUEST_CREATE_USER_ERROR, REQUEST_CREATE_USER_SUCCESS} from "../actions/userActions";
 
 
 const initialState = {
@@ -10,7 +10,7 @@ const initialState = {
 const createUserReducer = (state = initialState, action) => {
     switch (action.type) {
         case REQUEST_CREATE_USER:
-            return{
+            return {
                 ...state,
                 loading: true
             };

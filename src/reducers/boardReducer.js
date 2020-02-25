@@ -1,4 +1,4 @@
-import {REQUEST_BOARD,REQUEST_BOARD_ERROR,REQUEST_BOARD_SUCCESS} from "../actions/forumActions/boardActions";
+import {REQUEST_BOARD, REQUEST_BOARD_ERROR, REQUEST_BOARD_SUCCESS} from "../actions/forumActions/boardActions";
 
 const initialState = {
     loading: true,
@@ -9,7 +9,7 @@ const initialState = {
 const boardReducer = (state = initialState, action) => {
     switch (action.type) {
         case REQUEST_BOARD:
-            return{
+            return {
                 ...state,
                 loading: true
             };

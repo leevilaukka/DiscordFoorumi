@@ -9,7 +9,7 @@ const initialState = {
 const guildReducer = (state = initialState, action) => {
     switch (action.type) {
         case REQUEST_GUILDS:
-            return{
+            return {
                 ...state,
                 loading: true,
             };

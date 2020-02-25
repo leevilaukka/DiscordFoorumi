@@ -89,7 +89,7 @@ const Guilds = () => {
     const dispatch = useDispatch();
     const token = window.localStorage.getItem('dToken');
 
-    useEffect(() =>{
+    useEffect(() => {
         dispatch(getGuilds(token));
     }, [dispatch, token]);
 
@@ -110,13 +110,14 @@ const Guilds = () => {
                             {
                                 guild.icon
                                     ?
-                                    <GuildImg src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png`} alt={`Kanavan ${guild.name} kuvake - ${guild.icon}`}/>
+                                    <GuildImg src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png`}
+                                              alt={`Kanavan ${guild.name} kuvake - ${guild.icon}`}/>
                                     :
                                     <DefaultGuildImg><h3>{guild.name.charAt(0)}</h3></DefaultGuildImg>
                             }
                         </div>
                     </GuildCard>
-                    
+
                 ))
             }
         </GuildWrapper>

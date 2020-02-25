@@ -71,7 +71,7 @@ const YoutubeEmbed = props => {
     const youtube_parser = url => {
         const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
         const match = url.match(regExp);
-        return (match&&match[7].length===11)? match[7] : false;
+        return (match && match[7].length === 11) ? match[7] : false;
     };
 
     const video = `https://www.youtube.com/embed/${youtube_parser(props.videoID)}`;
@@ -80,28 +80,31 @@ const YoutubeEmbed = props => {
 
     return (
         <>
-        {
-            open
-                ?
-                <EmbedContainer>
-                    <EmbedWrapper>
-                        <iframe
-                            title={props.videoID}
-                            width="100%"
-                            height="100%"
-                            src={video}
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                        >
-                            Youtube-video
-                        </iframe>
-                    </EmbedWrapper>
-                    <CloseButton onClick={() => setOpen(!open)}><Icon icon={faWindowClose}/>Klikkaa sulkeaksesi upotteen</CloseButton>
-                </EmbedContainer>
-                :
-                <div><ThumbnailWrapper onClick={() => setOpen(!open)}><Icon icon={faYoutube} size="4x"/><VideoThumbnail src={image}/></ThumbnailWrapper></div>
-        }
+            {
+                open
+                    ?
+                    <EmbedContainer>
+                        <EmbedWrapper>
+                            <iframe
+                                title={props.videoID}
+                                width="100%"
+                                height="100%"
+                                src={video}
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            >
+                                Youtube-video
+                            </iframe>
+                        </EmbedWrapper>
+                        <CloseButton onClick={() => setOpen(!open)}><Icon icon={faWindowClose}/>Klikkaa sulkeaksesi
+                            upotteen</CloseButton>
+                    </EmbedContainer>
+                    :
+                    <div><ThumbnailWrapper onClick={() => setOpen(!open)}><Icon icon={faYoutube}
+                                                                                size="4x"/><VideoThumbnail src={image}/></ThumbnailWrapper>
+                    </div>
+            }
         </>
     );
 };

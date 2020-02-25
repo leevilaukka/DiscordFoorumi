@@ -14,7 +14,7 @@ const DiscordCallback = props => {
 
         const creds = btoa(`${CLIENT_ID}:${CLIENT_SECRET}`);
 
-        const url = qs.parse(props.location.search, { ignoreQueryPrefix: true });
+        const url = qs.parse(props.location.search, {ignoreQueryPrefix: true});
         const code = url["?code"];
 
         axios(`https://discordapp.com/api/oauth2/token?grant_type=authorization_code&code=${code}&redirect_uri=${redirect}`,

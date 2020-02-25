@@ -72,22 +72,22 @@ const Navbar = () => {
     const forumuser = useSelector(state => state.user.user);
 
     useEffect(() => {
-        if(user.id) {
+        if (user.id) {
             dispatch(getUser(user.id));
         }
-    },[userLoading, dispatch, user.id]);
+    }, [userLoading, dispatch, user.id]);
     useEffect(() => {
-        if(!forumuser){
+        if (!forumuser) {
             dispatch(postUser({
-                username:user.username,
-                email:user.email,
-                discordid:user.id,
-                avatar:user.avatar,
-                discriminator:user.discriminator,
-                locale:user.locale
+                username: user.username,
+                email: user.email,
+                discordid: user.id,
+                avatar: user.avatar,
+                discriminator: user.discriminator,
+                locale: user.locale
             }))
         }
-    }, [dispatch,forumuser, user]);
+    }, [dispatch, forumuser, user]);
 
     return (
         <NavWrapper>
@@ -97,8 +97,11 @@ const Navbar = () => {
                 </Link>
             </STitle>
             <ProfileWrapper>
-                {loggedIn && !userLoading ? <SMessage>Tervetuloa, {user.username}</SMessage> : <SMessage>Kirjaudu sisään!</SMessage>}
-                {loggedIn && !userLoading ? <Link to="/profile"> {user.avatar ? <SProfileImg src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.jpg`} alt=""/> : <SProfileImg src={logo} alt=""/> } </Link> : null}
+                {loggedIn && !userLoading ? <SMessage>Tervetuloa, {user.username}</SMessage> :
+                    <SMessage>Kirjaudu sisään!</SMessage>}
+                {loggedIn && !userLoading ? <Link to="/profile"> {user.avatar ?
+                    <SProfileImg src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.jpg`} alt=""/> :
+                    <SProfileImg src={logo} alt=""/>} </Link> : null}
             </ProfileWrapper>
             {loggedIn ? <Logout/> : <Login/>}
             <BoardLinks/>

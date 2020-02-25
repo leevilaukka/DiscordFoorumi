@@ -6,7 +6,6 @@ import ReactMarkdown from "react-markdown";
 import YoutubeEmbed from "../misc/YoutubeEmbed";
 
 
-
 const ArticleWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -48,13 +47,15 @@ const Articles = () => {
                 !loading
                 &&
                 articles.map(article => (
-                    <ArticleCard key={article._id}>
-                        <ArticleUser><p>{article.user ? article.user.username : "Anonyymi"} - {formatDate(article.date)}</p></ArticleUser>
-                        {article.embed && <YoutubeEmbed videoID={article.embed}/>}
-                        <ArticleBody><ReactMarkdown source={article.body}/></ArticleBody>
-                    </ArticleCard>
-                )
-            )}
+                        <ArticleCard key={article._id}>
+                            <ArticleUser>
+                                <p>{article.user ? article.user.username : "Anonyymi"} - {formatDate(article.date)}</p>
+                            </ArticleUser>
+                            {article.embed && <YoutubeEmbed videoID={article.embed}/>}
+                            <ArticleBody><ReactMarkdown source={article.body}/></ArticleBody>
+                        </ArticleCard>
+                    )
+                )}
         </ArticleWrapper>
     );
 };

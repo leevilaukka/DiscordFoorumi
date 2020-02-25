@@ -31,9 +31,9 @@ const Board = props => {
             {
                 currentBoard
                     ?
-                        !loading
-                            &&
-                        <CurrentBoard/>
+                    !loading
+                    &&
+                    <CurrentBoard/>
                     :
                     <NoAccessContainer>
                         <NoAccess/>

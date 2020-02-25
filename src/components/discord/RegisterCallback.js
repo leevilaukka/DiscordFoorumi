@@ -43,7 +43,7 @@ const SInput = styled.input`
 
 const RegisterCallback = props => {
 
-    let [alreadyUser,setAlreadyUser] = useState(false);
+    let [alreadyUser, setAlreadyUser] = useState(false);
 
     const dispatch = useDispatch();
 
@@ -57,9 +57,8 @@ const RegisterCallback = props => {
 
         const creds = btoa(`${CLIENT_ID}:${CLIENT_SECRET}`);
 
-        const url = qs.parse(props.location.search, { ignoreQueryPrefix: true });
+        const url = qs.parse(props.location.search, {ignoreQueryPrefix: true});
         const code = url["?code"];
-
 
 
         axios(`https://discordapp.com/api/oauth2/token?grant_type=authorization_code&code=${code}&redirect_uri=${redirect}`,
@@ -83,17 +82,17 @@ const RegisterCallback = props => {
 
 
     return (
-                !alreadyUser
-                &&
-                <FormWrapper>
-                    <STitle>Rekisteröidy</STitle>
-                    <InputWrapper>
-                        <h4>Käyttäjänimi</h4>
-                        <SInput value={user.username}/>
-                        <h4>Sähköposti</h4>
-                        <SInput value={user.email}/>
-                    </InputWrapper>
-                </FormWrapper>
+        !alreadyUser
+        &&
+        <FormWrapper>
+            <STitle>Rekisteröidy</STitle>
+            <InputWrapper>
+                <h4>Käyttäjänimi</h4>
+                <SInput value={user.username}/>
+                <h4>Sähköposti</h4>
+                <SInput value={user.email}/>
+            </InputWrapper>
+        </FormWrapper>
     );
 };
 

@@ -35,7 +35,7 @@ const threadReducer = (state = initialState, action) => {
 
         //REQUEST SINGLE THREAD
         case REQUEST_THREAD:
-            return{
+            return {
                 ...state,
                 singleThreadLoading: true
             };
@@ -53,9 +53,9 @@ const threadReducer = (state = initialState, action) => {
                 error: action.error
             };
 
-            // DELETE THREAD
+        // DELETE THREAD
         case REQUEST_DELETE_THREAD:
-            return{
+            return {
                 ...state,
                 loading: true
             };
@@ -76,9 +76,9 @@ const threadReducer = (state = initialState, action) => {
                 error: action.error
             };
 
-            // CREATE THREAD
+        // CREATE THREAD
         case REQUEST_CREATE_THREAD:
-            return{
+            return {
                 ...state,
                 createLoading: true
             };
@@ -106,9 +106,9 @@ const threadReducer = (state = initialState, action) => {
                 error: action.error
             };
 
-            // ALL THREADS
+        // ALL THREADS
         case REQUEST_ALL_THREADS:
-            return{
+            return {
                 ...state,
                 loading: true
             };
@@ -126,9 +126,9 @@ const threadReducer = (state = initialState, action) => {
                 error: action.error
             };
 
-            // EDIT THREADS
+        // EDIT THREADS
         case REQUEST_EDIT_THREAD:
-            return{
+            return {
                 ...state,
                 loading: true
             };

@@ -7,7 +7,8 @@ const PrivateRoute = props => {
     const loggedIn = useSelector(state => state.loggedIn);
 
     return (
-        loggedIn ? <Route path={props.path} component={props.component}/> : <Route path={props.path} component={NoAccess}/>
+        loggedIn ? <Route path={props.path} component={props.component}/> :
+            <Route path={props.path} component={NoAccess}/>
     )
 };
 

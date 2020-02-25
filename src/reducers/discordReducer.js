@@ -1,4 +1,8 @@
-import {REQUEST_DISCORD_USER,REQUEST_DISCORD_USER_ERROR,REQUEST_DISCORD_USER_SUCCESS} from "../actions/discordActions";
+import {
+    REQUEST_DISCORD_USER,
+    REQUEST_DISCORD_USER_ERROR,
+    REQUEST_DISCORD_USER_SUCCESS
+} from "../actions/discordActions";
 import {LOGOUT} from "../actions/authActions";
 
 const initialState = {
@@ -11,7 +15,7 @@ const initialState = {
 const discordUserReducer = (state = initialState, action) => {
     switch (action.type) {
         case REQUEST_DISCORD_USER:
-            return{
+            return {
                 ...state,
                 loading: true,
                 token: action.userID

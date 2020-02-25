@@ -1,5 +1,11 @@
-import {REQUEST_ARTICLES, REQUEST_ARTICLES_ERROR, REQUEST_ARTICLES_SUCCESS,REQUEST_CREATE_ARTICLES,REQUEST_CREATE_ARTICLES_ERROR,REQUEST_CREATE_ARTICLES_SUCCESS} from "../actions/forumActions/postActions";
-
+import {
+    REQUEST_ARTICLES,
+    REQUEST_ARTICLES_ERROR,
+    REQUEST_ARTICLES_SUCCESS,
+    REQUEST_CREATE_ARTICLES,
+    REQUEST_CREATE_ARTICLES_ERROR,
+    REQUEST_CREATE_ARTICLES_SUCCESS
+} from "../actions/forumActions/postActions";
 
 
 const initialState = {
@@ -14,7 +20,7 @@ const postReducer = (state = initialState, action) => {
     switch (action.type) {
         // GET actions
         case REQUEST_ARTICLES:
-            return{
+            return {
                 ...state,
                 loading: true
             };
@@ -32,18 +38,18 @@ const postReducer = (state = initialState, action) => {
                 error: action.error
             };
 
-            //POST actions
+        //POST actions
         case REQUEST_CREATE_ARTICLES:
-            return{
+            return {
                 ...state,
                 createLoading: true
             };
         case REQUEST_CREATE_ARTICLES_SUCCESS:
             let updatedArticles = [
                 {
-                ...action.response.article,
-                user: action.author,
-                thread: action.thread
+                    ...action.response.article,
+                    user: action.author,
+                    thread: action.thread
                 },
                 ...state.articles
             ];
