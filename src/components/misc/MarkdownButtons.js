@@ -66,8 +66,12 @@ const MarkdownButtons = () => {
             <MarkdownButton tabIndex="-1" title="Spoiler">
                 <Icon icon={faEyeSlash}/>
             </MarkdownButton>
-            <MarkdownIcon href="https://en.wikipedia.org/wiki/Markdown" target="_blank"
-                          title="Tämä tekstikenttä tukee Markdownia! Lue lisää klikkaamalla." tabIndex="-1">
+            <MarkdownIcon
+                href="https://en.wikipedia.org/wiki/Markdown"
+                target="_blank"
+                title="Tämä tekstikenttä tukee Markdownia! Lue lisää klikkaamalla."
+                tabIndex="-1"
+            >
                 <Icon icon={faMarkdown}/>
             </MarkdownIcon>
         </MarkdownWrapper>

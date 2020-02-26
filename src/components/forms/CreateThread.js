@@ -137,7 +137,7 @@ const CreateThread = () => {
                     rows="6"
                     onChange={e => setBody(e.target.value)}
                     value={body}
-                    placeholder="Teksti"
+                    placeholder="Teksti (pakollinen)"
                 />
                 <SubmitButton type="submit">Luo lanka</SubmitButton>
             </SForm>
