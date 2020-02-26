@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styled from "styled-components";
 import MarkdownButtons from "../misc/MarkdownButtons";
 import {useDispatch} from "react-redux";
@@ -120,6 +120,49 @@ const EditThread = props => {
             .then(props.afterSubmit);
     };
 
+    const bodyText = useRef(null);
+
+    const markdownSwitch = btnString => {
+        console.log(bodyText);
+        const textAreaValue = bodyText.current.value;
+        const selectionStart = bodyText.current.selectionStart;
+        const selectionEnd = bodyText.current.selectionEnd;
+        const textBefore = textAreaValue.substring(0, selectionStart);
+        const textAfter = textAreaValue.substring(selectionEnd, textAreaValue.length);
+        const selectionText = textAreaValue.substring(selectionStart, selectionEnd);
+        let newValue
+
+        console.log(selectionText);
+        switch (btnString) {
+            case "bold":
+                console.log("Bold");
+                newValue = textBefore + `**${selectionText}**` + textAfter;
+                bodyText.current.value = newValue;
+                setBody(newValue);
+                break;
+            case "italic":
+                console.log("Italic");
+                newValue = textBefore + `*${selectionText}*` + textAfter;
+                bodyText.current.value = newValue;
+                setBody(newValue);
+                break;
+            case "strikethrough":
+                console.log("Strike");
+                newValue = textBefore + `~~${selectionText}~~` + textAfter;
+                bodyText.current.value = newValue;
+                setBody(newValue);
+                break;
+            case "spoiler":
+                newValue = textBefore + `<spoiler>${selectionText}</spoiler>` + textAfter;
+                bodyText.current.value = newValue;
+                setBody(newValue);
+                console.log("Spoiler");
+                break;
+            default:
+                return;
+        }
+    };
+
     return (
         <>
             {
@@ -142,8 +185,9 @@ const EditThread = props => {
                                 onChange={e => setEmbed(e.target.value)}
                                 pattern={youTubeRegEx}
                             />
-                            <MarkdownButtons/>
+                            <MarkdownButtons handler={markdownSwitch}/>
                             <BodyTextArea
+                                ref={bodyText}
                                 rows="6"
                                 placeholder="Teksti"
                                 defaultValue={props.body}

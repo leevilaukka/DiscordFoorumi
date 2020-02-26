@@ -1,6 +1,6 @@
 import React from 'react';
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
-import {faBold, faHeading, faItalic, faStrikethrough, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
+import {faBold, faItalic, faStrikethrough, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import {faMarkdown} from "@fortawesome/free-brands-svg-icons";
 
@@ -48,22 +48,31 @@ const MarkdownIcon = styled.a`
    }
 `;
 
-const MarkdownButtons = () => {
+const MarkdownButtons = props => {
     return (
         <MarkdownWrapper>
-            <MarkdownButton tabIndex="-1" title="Lihavoi">
+            <MarkdownButton tabIndex="-1" title="Lihavoi" onClick={e => {
+                e.preventDefault();
+                props.handler("bold")
+            }}>
                 <Icon icon={faBold}/>
             </MarkdownButton>
-            <MarkdownButton tabIndex="-1" title="Kursivoi">
+            <MarkdownButton tabIndex="-1" title="Kursivoi" onClick={e => {
+                e.preventDefault();
+                props.handler("italic")
+            }}>
                 <Icon icon={faItalic}/>
             </MarkdownButton>
-            <MarkdownButton tabIndex="-1" title="Yliviivaa">
+            <MarkdownButton tabIndex="-1" title="Yliviivaa" onClick={e => {
+                e.preventDefault();
+                props.handler("strikethrough")
+            }}>
                 <Icon icon={faStrikethrough}/>
             </MarkdownButton>
-            <MarkdownButton tabIndex="-1" title="Otsikko">
-                <Icon icon={faHeading}/>
-            </MarkdownButton>
-            <MarkdownButton tabIndex="-1" title="Spoiler">
+            <MarkdownButton tabIndex="-1" title="Spoiler" onClick={e => {
+                e.preventDefault();
+                props.handler("spoiler")
+            }}>
                 <Icon icon={faEyeSlash}/>
             </MarkdownButton>
             <MarkdownIcon

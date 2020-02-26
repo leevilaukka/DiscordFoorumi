@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {postThread} from "../../actions/forumActions/threadActions";
 import styled from "styled-components";
@@ -115,6 +115,50 @@ const CreateThread = () => {
 
     };
 
+
+    const bodyText = useRef(null);
+
+    const markdownSwitch = btnString => {
+        console.log(bodyText);
+        const textAreaValue = bodyText.current.value;
+        const selectionStart = bodyText.current.selectionStart;
+        const selectionEnd = bodyText.current.selectionEnd;
+        const textBefore = textAreaValue.substring(0, selectionStart);
+        const textAfter = textAreaValue.substring(selectionEnd, textAreaValue.length);
+        const selectionText = textAreaValue.substring(selectionStart, selectionEnd);
+        let newValue
+
+        console.log(selectionText);
+        switch (btnString) {
+            case "bold":
+                console.log("Bold");
+                newValue = textBefore + `**${selectionText}**` + textAfter;
+                bodyText.current.value = newValue;
+                setBody(newValue);
+                break;
+            case "italic":
+                console.log("Italic");
+                newValue = textBefore + `*${selectionText}*` + textAfter;
+                bodyText.current.value = newValue;
+                setBody(newValue);
+                break;
+            case "strikethrough":
+                console.log("Strike");
+                newValue = textBefore + `~~${selectionText}~~` + textAfter;
+                bodyText.current.value = newValue;
+                setBody(newValue);
+                break;
+            case "spoiler":
+                newValue = textBefore + `<spoiler>${selectionText}</spoiler>` + textAfter;
+                bodyText.current.value = newValue;
+                setBody(newValue);
+                console.log("Spoiler");
+                break;
+            default:
+                return;
+        }
+    };
+
     return (
         <div>
             <SForm onSubmit={handleSubmit}>
@@ -132,8 +176,9 @@ const CreateThread = () => {
                     pattern={youTubeRegEx}
                     title="Anna kelvollinen YouTube-linkki!"
                 />
-                <MarkdownButtons/>
+                <MarkdownButtons handler={markdownSwitch}/>
                 <BodyTextArea
+                    ref={bodyText}
                     rows="6"
                     onChange={e => setBody(e.target.value)}
                     value={body}

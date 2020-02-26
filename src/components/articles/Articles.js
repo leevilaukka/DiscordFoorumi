@@ -52,7 +52,7 @@ const Articles = () => {
                                 <p>{article.user ? article.user.username : "Anonyymi"} - {formatDate(article.date)}</p>
                             </ArticleUser>
                             {article.embed && <YoutubeEmbed videoID={article.embed}/>}
-                            <ArticleBody><ReactMarkdown source={article.body}/></ArticleBody>
+                            <ArticleBody><ReactMarkdown source={article.body} escapeHtml={false}/></ArticleBody>
                         </ArticleCard>
                     )
                 )}
