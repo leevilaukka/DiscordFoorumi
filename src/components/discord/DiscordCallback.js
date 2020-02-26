@@ -10,7 +10,7 @@ const DiscordCallback = props => {
     useEffect(() => {
         const CLIENT_ID = "669505696991150085";
         const CLIENT_SECRET = "cBvSc7LP5MYlF4cptOQE5zUrW_AaQJBb";
-        const redirect = encodeURIComponent(`http://reactdiscordfoorumi,herokuapp.com/discord/login/heroku/callback`);
+        const redirect = encodeURIComponent(`http://localhost:3000/discord/login/callback`);
 
         const creds = btoa(`${CLIENT_ID}:${CLIENT_SECRET}`);
 
