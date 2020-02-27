@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import 'dotenv/config'
 
 // Redux
 import {useDispatch} from "react-redux";
