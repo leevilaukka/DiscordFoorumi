@@ -44,7 +44,6 @@ const UserImage = styled.img`
 `;
 
 const UserName = styled.h1`
-    align-self: center;
     
     @media (max-width: 600px) {
         font-size: 1.2rem;
