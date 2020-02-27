@@ -27,7 +27,7 @@ export const requestAllBoardsError = error => {
 export const getAllBoards = () => {
     return dispatch => {
         dispatch(requestAllBoards());
-        return axios.get(`https://foorumiapi.herokuapp.com/boards/`)
+        return axios.get(`https://foorumiapiprod.herokuapp.com/boards/`)
             .then(res => dispatch(requestAllBoardsSuccess(res.data)))
             .catch(e => dispatch(requestAllBoardsError(e)))
     };

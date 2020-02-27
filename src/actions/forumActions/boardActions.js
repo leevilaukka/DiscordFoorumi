@@ -28,7 +28,7 @@ export const requestBoardError = error => {
 export const getBoard = board => {
     return dispatch => {
         dispatch(requestBoard(board));
-        return axios.get(`https://foorumiapi.herokuapp.com/boards/b/${board}`)
+        return axios.get(`https://foorumiapiprod.herokuapp.com/boards/b/${board}`)
             .then(res => dispatch(requestBoardSuccess(res.data)))
             .catch(e => dispatch(requestBoardError(e)))
     };

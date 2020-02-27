@@ -28,7 +28,7 @@ export const requestDiscordUserError = error => {
 export const getDiscordUser = token => {
     return dispatch => {
         dispatch(requestDiscordUser(token));
-        return axios.get(`https://foorumiapi.herokuapp.com/discord/user/${token}`)
+        return axios.get(`https://foorumiapiprod.herokuapp.com/discord/user/${token}`)
             .then(res => dispatch(requestDiscordUserSuccess(res.data)))
             .catch(e => dispatch(requestDiscordUserError(e)))
     };

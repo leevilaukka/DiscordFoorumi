@@ -27,7 +27,7 @@ export const requestGuildsError = error => {
 export const getGuilds = token => {
     return dispatch => {
         dispatch(requestGuilds(token));
-        return axios.get(`https://foorumiapi.herokuapp.com/discord/user/guilds/${token}`)
+        return axios.get(`https://foorumiapiprod.herokuapp.com/discord/user/guilds/${token}`)
             .then(res => dispatch(requestGuildsSuccess(res.data)))
             .catch(e => dispatch(requestGuildsError(e)))
     };

@@ -28,7 +28,7 @@ export const requestAllThreadsError = error => {
 export const getAllThreads = board => {
     return dispatch => {
         dispatch(requestAllThreads(board));
-        return axios.get(`https://foorumiapi.herokuapp.com/threads/board/${board}`)
+        return axios.get(`https://foorumiapiprod.herokuapp.com/threads/board/${board}`)
             .then(res => dispatch(requestAllThreadsSuccess(res.data)))
             .catch(e => dispatch(requestAllThreadsError(e)))
     };
