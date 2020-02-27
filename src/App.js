@@ -20,6 +20,7 @@ import BoardLinks from "./components/boards/BoardLinks";
 import Loader from "./components/misc/loader/Loader";
 import Board from "./pages/Board";
 import Thread from "./pages/Thread";
+import Footer from "./components/misc/footer/Footer";
 
 function App() {
     const dispatch = useDispatch();
@@ -49,6 +50,7 @@ function App() {
                     <Route path="/discord/login/callback" component={DiscordCallback}/>
                     <Route path="/discord/register/callback" component={RegisterCallback}/>
                 </Switch>
+                <Footer/>
             </AppWrapper>
         </Router>
     );
