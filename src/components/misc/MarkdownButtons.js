@@ -1,8 +1,13 @@
 import React from 'react';
 import {FontAwesomeIcon as Icon} from "@fortawesome/react-fontawesome";
-import {faBold, faItalic, faStrikethrough, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
-import styled from "styled-components";
+import {
+    faBold,
+    faItalic,
+    faStrikethrough,
+    faEyeSlash
+} from "@fortawesome/free-solid-svg-icons";
 import {faMarkdown} from "@fortawesome/free-brands-svg-icons";
+import styled from "styled-components";
 
 const MarkdownWrapper = styled.div`
     display: flex;

@@ -119,31 +119,27 @@ const CreateThread = () => {
     const bodyText = useRef(null);
 
     const markdownSwitch = btnString => {
-        console.log(bodyText);
         const textAreaValue = bodyText.current.value;
         const selectionStart = bodyText.current.selectionStart;
         const selectionEnd = bodyText.current.selectionEnd;
         const textBefore = textAreaValue.substring(0, selectionStart);
         const textAfter = textAreaValue.substring(selectionEnd, textAreaValue.length);
         const selectionText = textAreaValue.substring(selectionStart, selectionEnd);
-        let newValue
 
-        console.log(selectionText);
+        let newValue;
+
         switch (btnString) {
             case "bold":
-                console.log("Bold");
                 newValue = textBefore + `**${selectionText}**` + textAfter;
                 bodyText.current.value = newValue;
                 setBody(newValue);
                 break;
             case "italic":
-                console.log("Italic");
                 newValue = textBefore + `*${selectionText}*` + textAfter;
                 bodyText.current.value = newValue;
                 setBody(newValue);
                 break;
             case "strikethrough":
-                console.log("Strike");
                 newValue = textBefore + `~~${selectionText}~~` + textAfter;
                 bodyText.current.value = newValue;
                 setBody(newValue);
@@ -152,7 +148,6 @@ const CreateThread = () => {
                 newValue = textBefore + `<spoiler>${selectionText}</spoiler>` + textAfter;
                 bodyText.current.value = newValue;
                 setBody(newValue);
-                console.log("Spoiler");
                 break;
             default:
                 return;
