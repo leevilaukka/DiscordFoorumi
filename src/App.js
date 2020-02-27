@@ -20,6 +20,7 @@ import BoardLinks from "./components/boards/BoardLinks";
 import Loader from "./components/misc/loader/Loader";
 import Board from "./pages/Board";
 import Thread from "./pages/Thread";
+import Footer from "./components/misc/footer/Footer";
 
 function App() {
     const dispatch = useDispatch();
@@ -36,9 +37,7 @@ function App() {
     return (
         <Router>
             <AppWrapper className="App">
-                <Route path="/">
-                    <Navbar/>
-                </Route>
+                <Navbar/>
                 <Route path="/loader" component={Loader}/>
                 <Route path="/paypal" component={PayPalForm}/>
                 <PrivateRoute path="/profile" component={Profile}/>
@@ -49,6 +48,7 @@ function App() {
                     <Route path="/discord/login/callback" component={DiscordCallback}/>
                     <Route path="/discord/register/callback" component={RegisterCallback}/>
                 </Switch>
+                <Footer/>
             </AppWrapper>
         </Router>
     );
