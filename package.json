@@ -13,7 +13,6 @@
     "axios": "^0.19.2",
     "btoa": "^1.2.1",
     "discord-oauth2": "^2.0.2",
-    "dotenv": "^8.2.0",
     "iso-639-1": "^2.1.0",
     "mongoose": "^5.8.10",
     "query-string": "^6.10.1",
