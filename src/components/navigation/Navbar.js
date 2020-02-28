@@ -91,7 +91,7 @@ const Navbar = () => {
                     const emailData = {
                         to: user.email,
                         subject: "Käyttäjä luotu!",
-                        text:`Hei ${user.username}! /nLoit juuri käyttäjän DiscordFoorumille!`
+                        text:`Hei ${user.username}! \nLoit juuri käyttäjän DiscordFoorumille!`
                     };
                     axios.post('https://foorumiapiprod.herokuapp.com/mail', emailData).then(r => console.log(r))
                 })

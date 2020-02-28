@@ -19,7 +19,7 @@ const FooterContainer = styled.div`
 const Footer = () => {
     return (
         <FooterContainer>
-            <p>DiscordFoorumi</p>
+            <p>DiscordFoorumi (work in progress)</p>
             <p>2020 &copy; Leevi Laukka</p>
         </FooterContainer>
     );
