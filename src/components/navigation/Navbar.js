@@ -79,23 +79,23 @@ const Navbar = () => {
     }, [userLoading, dispatch, user.id]);
     useEffect(() => {
         if (!forumuser) {
+            dispatch(postUser({
+                username: user.username,
+                email: user.email,
+                discordid: user.id,
+                avatar: user.avatar,
+                discriminator: user.discriminator,
+                locale: user.locale
+            }))
+                .then(() => {
+                    const emailData = {
+                        to: user.email,
+                        subject: "Käyttäjä luotu!",
+                        text:`Hei ${user.username}! /nLoit juuri käyttäjän DiscordFoorumille!`
+                    };
+                    axios.post('https://foorumiapiprod.herokuapp.com/mail', emailData).then(r => console.log(r))
+                })
         }
-        dispatch(postUser({
-            username: user.username,
-            email: user.email,
-            discordid: user.id,
-            avatar: user.avatar,
-            discriminator: user.discriminator,
-            locale: user.locale
-        }))
-        .then(() => {
-            const emailData = {
-                to: user.email,
-                subject: "Käyttäjä luotu!",
-                text:`Hei ${user.username}! /nLoit juuri käyttäjän DiscordFoorumille!`
-            };
-            axios.post('https://foorumiapiprod.herokuapp.com/mail', emailData).then(r => console.log(r))
-        })
     }, [dispatch, forumuser, user]);
 
     return (
