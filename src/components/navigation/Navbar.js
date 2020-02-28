@@ -87,14 +87,6 @@ const Navbar = () => {
                 discriminator: user.discriminator,
                 locale: user.locale
             }))
-                .then(() => {
-                    const emailData = {
-                        to: user.email,
-                        subject: "Käyttäjä luotu!",
-                        text:`Hei ${user.username}! Loit juuri käyttäjän DiscordFoorumille!`
-                    };
-                    axios.post('https://foorumiapiprod.herokuapp.com/mail', emailData).then(r => console.log(r))
-                })
         }
     }, [dispatch, forumuser, user]);
 

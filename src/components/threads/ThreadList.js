@@ -117,7 +117,6 @@ const ThreadList = () => {
     const dispatch = useDispatch();
 
     const handleDelete = e => {
-        // const threadId = e.target.value;
         dispatch(deleteThread(e.target.value));
     };
 
