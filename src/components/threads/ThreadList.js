@@ -11,7 +11,6 @@ import Loader from "../misc/loader/Loader";
 import logo from "../../assets/Discord-Logo-Color.png"
 import YoutubeEmbed from "../misc/YoutubeEmbed";
 import EditThread from "../forms/EditThread";
-import {useChain, animated, useSpring, useTransition} from "react-spring";
 
 const ThreadListWrapper = styled.div`
   display: flex;
@@ -67,7 +66,7 @@ const ActionsWrapper = styled.div`
     justify-content: flex-end;
 `;
 
-const ThreadListItem = styled(animated.div)`
+const ThreadListItem = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -107,23 +106,6 @@ const ThreadAvatar = styled.img`
 
 
 const ThreadList = () => {
-
-    const springRef = useRef();
-    const transitionRef = useRef();
-
-    const animatedStyles = useSpring({
-        transform: 'translateX(0)',
-        opacity: 1,
-        from: {
-            transform: 'translateX(100%)',
-            opacity: 0
-        },
-        ref: springRef
-    });
-
-    const transitions = useTransition({animatedStyles, ref: transitionRef});
-
-    useChain([springRef, transitionRef]);
 
     let [open, setOpen] = useState(false);
 
