@@ -7,6 +7,7 @@ import {Link} from "react-router-dom";
 import BoardLinks from "../boards/BoardLinks";
 import logo from '../../assets/Discord-Logo-Color.png'
 import {getUser, postUser} from "../../actions/userActions";
+import axios from "axios";
 
 const NavWrapper = styled.div`
     width: 100%;
@@ -86,6 +87,14 @@ const Navbar = () => {
                 discriminator: user.discriminator,
                 locale: user.locale
             }))
+                .then(() => {
+                    const emailData = {
+                        to: user.email,
+                        subject: "Käyttäjä luotu!",
+                        text:`Hei ${user.username}! Loit juuri käyttäjän DiscordFoorumille!`
+                    };
+                    axios.post('https://foorumiapiprod.herokuapp.com/mail', emailData).then(r => console.log(r))
+                })
         }
     }, [dispatch, forumuser, user]);
 

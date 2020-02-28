@@ -26,7 +26,7 @@ const PayPalForm = () => {
     };
 
     const handlePayment = (details, data) => {
-        axios.post('https://foorumiapi.herokuapp.com/mail/', {
+        axios.post('https://foorumiapiprod.herokuapp.com/mail/', {
             to: details.payer.email_address,
             subject: `Kiitti täst, ${details.payer.name.given_name} :-D`,
             text: `Kiitti näist ${donation} eurost :--D`
