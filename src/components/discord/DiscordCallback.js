@@ -8,8 +8,8 @@ require('dotenv').config();
 const DiscordCallback = props => {
 
     useEffect(() => {
-        const CLIENT_ID = "669505696991150085";
-        const CLIENT_SECRET = "cBvSc7LP5MYlF4cptOQE5zUrW_AaQJBb";
+        const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+        const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
         const redirect = encodeURIComponent(`https://foorumi.leevila.me/discord/login/callback`);
 
         const creds = btoa(`${CLIENT_ID}:${CLIENT_SECRET}`);
