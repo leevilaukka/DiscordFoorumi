@@ -11,11 +11,11 @@ const DiscordCallback = props => {
         const url = qs.parse(props.location.search, {ignoreQueryPrefix: true});
         const code = url["?code"];
 
-        axios.get(`https://foorumiapiprod.herokuapp.com/login/${code}`)
+        axios.get(`https://foorumiapiprod.herokuapp.com/discord/login/token/${code}`)
             .then(res => {
+
                 const token = res.token;
                 window.localStorage.setItem('dToken', token);
-                window.location.replace('/');
             })
             .catch(e => console.error(e))
     });
