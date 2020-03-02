@@ -7,8 +7,8 @@ import axios from "axios";
 const DiscordCallback = props => {
 
     useEffect(() => {
-        const CLIENT_ID = "669505696991150085";
-        const CLIENT_SECRET = "cBvSc7LP5MYlF4cptOQE5zUrW_AaQJBb";
+        const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+        const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
         const redirect = encodeURIComponent(`http://localhost:3000/discord/login/callback`);
         console.log(CLIENT_ID);
         const creds = btoa(`${CLIENT_ID}:${CLIENT_SECRET}`);
