@@ -92,7 +92,7 @@ const Navbar = () => {
                         to: user.email,
                         subject: "Käyttäjä luotu!",
                         text:`Hei ${user.username}! \nLoit juuri käyttäjän DiscordFoorumille!`,
-                        "o:tag": "signup"
+                        otag: "signup"
                     };
                     axios.post('https://foorumiapiprod.herokuapp.com/mail', emailData).then(r => console.log(r))
                 })
