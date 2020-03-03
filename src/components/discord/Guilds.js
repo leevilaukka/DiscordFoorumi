@@ -78,7 +78,14 @@ const DefaultGuildImg = styled.div`
 const Title = styled.h3`
     min-width: 100%;
     padding: 1rem;
+    
+    h4{
+      color:gray;
+    }
 `;
+
+
+
 
 const ErrorMessage = styled.h2`
     color: #ff0000;
@@ -100,10 +107,11 @@ const Guilds = () => {
 
     return (
         <GuildWrapper>
-            <Title>Palvelimet</Title>
+            <Title>Palvelimet <h4>Määrä: {guilds.length}</h4></Title>
             {error && <ErrorMessage>{error.message}</ErrorMessage>}
             {
-                loading ? <Loader/> : guilds.map(guild => (
+                loading ? <Loader/> :
+                    guilds.map(guild => (
                     <GuildCard key={guild.id}>
                         <div className="inner">
                             <p>{guild.name}</p>

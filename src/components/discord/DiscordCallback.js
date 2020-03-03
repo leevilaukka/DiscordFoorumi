@@ -10,9 +10,9 @@ const DiscordCallback = props => {
         const url = qs.parse(props.location.search, {ignoreQueryPrefix: true});
         const code = url["?code"];
 
-        axios.get(`https://foorumiapi.herokuapp.com/login/${code}`)
+        axios.get(`https://foorumiapi.herokuapp.com/discord/login/${code}`)
             .then(res => {
-                const token = res.token;
+                const token = res.data.token;
                 window.localStorage.setItem('dToken', token);
                 window.location.replace('/');
             })
