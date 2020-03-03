@@ -43,4 +43,13 @@ spoiler:hover::after{
   background: none;
 }
 
+blockquote {
+  padding: 1rem;
+  border: 1px dotted  #7289da;
+  border-left: 3px solid #7289da;
+  border-radius: 5px;
+  background-color: #23272a;
+  margin-bottom: 1rem;
+}
+
 

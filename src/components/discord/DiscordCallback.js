@@ -13,9 +13,9 @@ const DiscordCallback = props => {
 
         axios.get(`https://foorumiapiprod.herokuapp.com/discord/login/token/${code}`)
             .then(res => {
-
-                const token = res.token;
+                const token = res.data.token;
                 window.localStorage.setItem('dToken', token);
+                window.location.replace('/');
             })
             .catch(e => console.error(e))
     });
