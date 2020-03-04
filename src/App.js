@@ -21,6 +21,7 @@ import Loader from "./components/misc/loader/Loader";
 import Board from "./pages/Board";
 import Thread from "./pages/Thread";
 import Footer from "./components/misc/footer/Footer";
+import Rickroll from "./components/misc/Rickroll";
 
 function App() {
     const dispatch = useDispatch();
@@ -38,6 +39,7 @@ function App() {
         <Router>
             <AppWrapper className="App">
                 <Navbar/>
+                <Route path="/" exact component={Rickroll}/>
                 <Route path="/loader" component={Loader}/>
                 <Route path="/paypal" component={PayPalForm}/>
                 <PrivateRoute path="/profile" component={Profile}/>

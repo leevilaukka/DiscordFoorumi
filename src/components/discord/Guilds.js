@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import styled from "styled-components";
 import Loader from "../misc/loader/Loader";
 import {getGuilds} from "../../actions/guildActions";
+import YoutubeEmbed from "../misc/YoutubeEmbed";
 
 const GuildWrapper = styled.div`
     display: flex;
@@ -78,7 +79,12 @@ const DefaultGuildImg = styled.div`
 const Title = styled.h3`
     min-width: 100%;
     padding: 1rem;
+    
+    h4{
+      color:gray;
+    }
 `;
+
 
 const ErrorMessage = styled.h2`
     color: #ff0000;
@@ -98,9 +104,14 @@ const Guilds = () => {
     const error = useSelector(state => state.guilds.error);
 
 
+
     return (
         <GuildWrapper>
-            <Title>Palvelimet</Title>
+            {
+
+            }
+
+            <Title>Palvelimet <h4>Määrä: {guilds.length}</h4></Title>
             {error && <ErrorMessage>{error.message}</ErrorMessage>}
             {
                 loading ? <Loader/> : guilds.map(guild => (
