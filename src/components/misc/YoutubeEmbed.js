@@ -97,8 +97,10 @@ const YoutubeEmbed = props => {
                                 Youtube-video
                             </iframe>
                         </EmbedWrapper>
-                        <CloseButton onClick={() => setOpen(!open)}><Icon icon={faWindowClose}/>Klikkaa sulkeaksesi
-                            upotteen</CloseButton>
+                        <CloseButton onClick={() => setOpen(!open)}>
+                            <Icon icon={faWindowClose}/>
+                            Klikkaa sulkeaksesi upotteen
+                        </CloseButton>
                     </EmbedContainer>
                     :
                     <div>
