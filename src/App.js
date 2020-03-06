@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import ReactGA from 'react-ga';
 
 // Redux
 import {useDispatch} from "react-redux";
@@ -24,6 +25,10 @@ import Footer from "./components/misc/footer/Footer";
 import Rickroll from "./components/misc/Rickroll";
 
 function App() {
+
+    ReactGA.initialize('UA-159660295-1');
+    ReactGA.pageview(window.location.pathname + window.location.search);
+
     const dispatch = useDispatch();
 
     useEffect(() => {

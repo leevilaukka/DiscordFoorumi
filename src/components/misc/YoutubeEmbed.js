@@ -74,7 +74,7 @@ const YoutubeEmbed = props => {
         return (match && match[7].length === 11) ? match[7] : false;
     };
 
-    const video = `https://www.youtube.com/embed/${youtube_parser(props.videoID)}`;
+    const video = `https://www.youtube.com/embed/${youtube_parser(props.videoID)}?autoplay=1`;
     const image = `https://img.youtube.com/vi/${youtube_parser(props.videoID)}/maxresdefault.jpg`;
     let [open, setOpen] = useState(false);
 
