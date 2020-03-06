@@ -31,7 +31,7 @@ const PayPalForm = () => {
             subject: `Kiitti täst, ${details.payer.name.given_name} :-D`,
             text: `Kiitti näist ${donation} eurost :--D`
         });
-        console.log(details)
+        console.log(data)
     };
 
     return (
