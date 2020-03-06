@@ -101,8 +101,14 @@ const YoutubeEmbed = props => {
                             upotteen</CloseButton>
                     </EmbedContainer>
                     :
-                    <div><ThumbnailWrapper onClick={() => setOpen(!open)}><Icon icon={faYoutube}
-                                                                                size="4x"/><VideoThumbnail src={image}/></ThumbnailWrapper>
+                    <div>
+                        <ThumbnailWrapper onClick={() => setOpen(!open)}>
+                            <Icon
+                                icon={faYoutube}
+                                size="4x"
+                            />
+                            <VideoThumbnail src={image}/>
+                        </ThumbnailWrapper>
                     </div>
             }
         </>
