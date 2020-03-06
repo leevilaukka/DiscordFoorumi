@@ -26,6 +26,7 @@ import Rickroll from "./components/misc/Rickroll";
 
 function App() {
 
+    // Google Analytics
     ReactGA.initialize('UA-159660295-1');
     ReactGA.pageview(window.location.pathname + window.location.search);
 

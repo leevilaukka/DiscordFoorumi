@@ -1,7 +1,11 @@
 {
   "short_name": "DiscordFoorumi",
-  "name": "Foorumi Discord-käyttäjille",
+  "name": "DiscordFoorumi",
+  "version": "1.0.2",
+  "version_name": "Public Beta",
+  "description": "Foorumi Discord-käyttäjille",
   "author": "leevilaukka",
+  "homepage_url": "https://foorumi.leevila.me",
   "icons": [
     {
       "src": "logo512.png",
