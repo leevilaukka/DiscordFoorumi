@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import {useSelector} from "react-redux";
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import Loader from "../misc/loader/Loader";
 
 const BoardWrapper = styled.div`
@@ -14,6 +14,9 @@ const BoardWrapper = styled.div`
 const SBoard = styled.div`
     padding: 1rem;
     
+     .active {
+      color: #7289da;
+    }
     
     a {
         color: #FFF;
@@ -32,10 +35,10 @@ const BoardLinks = () => {
             {
                 loading ? <Loader/> : boards.map(board => {
                     const boardURI = board.boarduri;
-                    //.toLowerCase().replace(" ","").normalize("NFD").replace(/[\u0300-\u036f]/g, ""
+
                     return (
                         <SBoard key={board._id}>
-                            <Link to={`/b/${boardURI}`}>{board.title}</Link>
+                            <NavLink to={`/b/${boardURI}`}>{board.title}</NavLink>
                         </SBoard>
                     )
                 })
