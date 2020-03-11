@@ -50,7 +50,6 @@ function App() {
                 <Route path="/loader" component={Loader}/>
                 <Route path="/paypal" component={PayPalForm}/>
                 <PrivateRoute path="/profile" component={Profile}/>
-                <Route path="/boards" component={BoardLinks}/>
                 <Route path="/b/:board" exact component={Board}/>
                 <Route path="/b/:board/:thread" exact component={Thread}/>
                 <Switch>

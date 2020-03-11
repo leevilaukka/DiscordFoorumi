@@ -23,6 +23,10 @@ const SBoard = styled.div`
         text-decoration: none;
         padding: 5px;
         border-radius: 5px;
+
+      :hover{
+          color: #7289da;
+      }
     }
 `;
 
