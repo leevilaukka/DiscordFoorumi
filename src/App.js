@@ -24,6 +24,7 @@ import Board from "./pages/Board";
 import Thread from "./pages/Thread";
 import Footer from "./components/misc/footer/Footer";
 import Rickroll from "./components/misc/Rickroll";
+import DiscordWidget from "./components/misc/DiscordWidget";
 
 function App() {
 
@@ -47,6 +48,7 @@ function App() {
             <AppWrapper className="App">
                 <Navbar/>
                 <Route path="/" exact component={Rickroll}/>
+                <Route path="/illuminati" exact component={DiscordWidget}/>
                 <Route path="/loader" component={Loader}/>
                 <Route path="/paypal" component={PayPalForm}/>
                 <PrivateRoute path="/profile" component={Profile}/>

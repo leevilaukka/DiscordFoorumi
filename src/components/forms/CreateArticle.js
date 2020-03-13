@@ -108,31 +108,33 @@ const CreateArticle = () => {
         const textBefore = textAreaValue.substring(0, selectionStart);
         const textAfter = textAreaValue.substring(selectionEnd, textAreaValue.length);
         const selectionText = textAreaValue.substring(selectionStart, selectionEnd);
-        let newValue
+        let newValue;
 
-        switch (btnString) {
-            case "bold":
-                newValue = textBefore + `**${selectionText}**` + textAfter;
-                bodyText.current.value = newValue;
-                setBody(newValue);
-                break;
-            case "italic":
-                newValue = textBefore + `*${selectionText}*` + textAfter;
-                bodyText.current.value = newValue;
-                setBody(newValue);
-                break;
-            case "strikethrough":
-                newValue = textBefore + `~~${selectionText}~~` + textAfter;
-                bodyText.current.value = newValue;
-                setBody(newValue);
-                break;
-            case "spoiler":
-                newValue = textBefore + `<spoiler>${selectionText}</spoiler>` + textAfter;
-                bodyText.current.value = newValue;
-                setBody(newValue);
-                break;
-            default:
-                return;
+        if(selectionText) {
+            switch (btnString) {
+                case "bold":
+                    newValue = textBefore + `**${selectionText}**` + textAfter;
+                    bodyText.current.value = newValue;
+                    setBody(newValue);
+                    break;
+                case "italic":
+                    newValue = textBefore + `*${selectionText}*` + textAfter;
+                    bodyText.current.value = newValue;
+                    setBody(newValue);
+                    break;
+                case "strikethrough":
+                    newValue = textBefore + `~~${selectionText}~~` + textAfter;
+                    bodyText.current.value = newValue;
+                    setBody(newValue);
+                    break;
+                case "spoiler":
+                    newValue = textBefore + `<spoiler>${selectionText}</spoiler>` + textAfter;
+                    bodyText.current.value = newValue;
+                    setBody(newValue);
+                    break;
+                default:
+                    return;
+            }
         }
     };
 
