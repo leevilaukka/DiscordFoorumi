@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {apiUrl} from "../../config";
 
 export const REQUEST_BOARD = "REQUEST_BOARD";
 export const REQUEST_BOARD_SUCCESS = "REQUEST_BOARD_SUCCESS";
@@ -28,7 +29,7 @@ export const requestBoardError = error => {
 export const getBoard = board => {
     return dispatch => {
         dispatch(requestBoard(board));
-        return axios.get(`https://foorumiapiprod.herokuapp.com/boards/b/${board}`)
+        return axios.get(`${apiUrl}/boards/b/${board}`)
             .then(res => dispatch(requestBoardSuccess(res.data)))
             .catch(e => dispatch(requestBoardError(e)))
     };

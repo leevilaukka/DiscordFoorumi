@@ -1,4 +1,5 @@
 import axios from "axios";
+import {apiUrl} from "../../config";
 
 export const REQUEST_ARTICLES = "REQUEST_ARTICLES";
 export const REQUEST_ARTICLES_SUCCESS = "REQUEST_ARTICLES_SUCCESS";
@@ -32,7 +33,7 @@ export const requestArticlesError = error => {
 export const getArticles = thread => {
     return dispatch => {
         dispatch(requestArticles(thread));
-        return axios.get(`https://foorumiapiprod.herokuapp.com/articles/thread/${thread}`)
+        return axios.get(`${apiUrl}/articles/thread/${thread}`)
             .then(res => dispatch(requestArticlesSuccess(res.data)))
             .catch(e => dispatch(requestArticlesError(e)))
     };
@@ -63,7 +64,7 @@ export const requestCreateArticlesError = error => {
 export const createArticle = (articleData, author, thread) => {
     return dispatch => {
         dispatch(requestCreateArticles());
-        return axios.post(`https://foorumiapiprod.herokuapp.com/articles/`, articleData)
+        return axios.post(`${apiUrl}/articles/`, articleData)
             .then(res => dispatch(requestCreateArticlesSuccess(res.data, author, thread)))
             .catch(e => dispatch(requestCreateArticlesError(e)))
     };

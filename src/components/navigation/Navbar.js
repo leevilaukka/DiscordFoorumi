@@ -8,6 +8,7 @@ import BoardLinks from "../boards/BoardLinks";
 import logo from '../../assets/Discord-Logo-Color.png'
 import {getUser, postUser} from "../../actions/userActions";
 import axios from "axios";
+import {apiUrl} from "../../config";
 
 const NavWrapper = styled.div`
     width: 100%;
@@ -71,6 +72,7 @@ const Navbar = () => {
     const userLoading = useSelector(state => state.discordUser.loading);
     const loggedIn = useSelector(state => state.loggedIn);
     const forumuser = useSelector(state => state.user.user);
+    const forumLoading = useSelector(state => state.boards.loading);
 
     useEffect(() => {
         if (user.id) {
@@ -94,7 +96,7 @@ const Navbar = () => {
                         text:`Hei ${user.username}! \nLoit juuri käyttäjän DiscordFoorumille!`,
                         otag: "signup"
                     };
-                    axios.post('https://foorumiapiprod.herokuapp.com/mail', emailData).then(r => console.log(r))
+                    axios.post(`${apiUrl}/mail`, emailData).then(r => console.log(r))
                 })
         }
     }, [dispatch, forumuser, user]);
@@ -113,7 +115,7 @@ const Navbar = () => {
                     <SProfileImg src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.jpg`} alt=""/> :
                     <SProfileImg src={logo} alt=""/>} </Link> : null}
             </ProfileWrapper>
-            {loggedIn ? <Logout/> : <Login/>}
+            {loggedIn && !forumLoading ? <Logout/> : <Login/>}
             <BoardLinks/>
         </NavWrapper>
     );

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {apiUrl} from "../config";
 
 export const REQUEST_GUILDS = "REQUEST_GUILDS";
 export const REQUEST_GUILDS_SUCCESS = "REQUEST_GUILDS_SUCCESS";
@@ -27,7 +28,7 @@ export const requestGuildsError = error => {
 export const getGuilds = token => {
     return dispatch => {
         dispatch(requestGuilds(token));
-        return axios.get(`https://foorumiapiprod.herokuapp.com/discord/user/guilds/${token}`)
+        return axios.get(`${apiUrl}/discord/user/guilds/${token}`)
             .then(res => dispatch(requestGuildsSuccess(res.data)))
             .catch(e => dispatch(requestGuildsError(e)))
     };

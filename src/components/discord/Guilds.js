@@ -128,7 +128,6 @@ const Guilds = () => {
                             }
                         </div>
                     </GuildCard>
-
                 ))
             }
         </GuildWrapper>

@@ -1,4 +1,5 @@
 import axios from "axios";
+import {apiUrl} from "../../config";
 
 export const REQUEST_THREAD = "REQUEST_THREAD";
 export const REQUEST_THREAD_SUCCESS = "REQUEST_THREAD_SUCCESS";
@@ -40,7 +41,7 @@ export const requestThreadError = error => {
 export const getThread = threaduri => {
     return dispatch => {
         dispatch(requestThread(threaduri));
-        return axios.get(`https://foorumiapiprod.herokuapp.com/threads/uri/${threaduri}`)
+        return axios.get(`${apiUrl}/threads/uri/${threaduri}`)
             .then(res => dispatch(requestThreadSuccess(res.data)))
             .catch(e => dispatch(requestThreadError(e)))
     };
@@ -73,7 +74,7 @@ export const requestCreateThreadError = error => {
 export const postThread = (threadData, author, board) => {
     return dispatch => {
         dispatch(requestCreateThread());
-        return axios.post(`https://foorumiapiprod.herokuapp.com/threads/`, threadData)
+        return axios.post(`${apiUrl}/threads/`, threadData)
             .then(res => dispatch(requestCreateThreadSuccess(res.data, author, board)))
             .catch(e => dispatch(requestCreateThreadError(e)))
     };
@@ -105,7 +106,7 @@ export const requestDeleteThreadError = error => {
 export const deleteThread = threadId => {
     return dispatch => {
         dispatch(requestDeleteThread());
-        return axios.delete(`https://foorumiapiprod.herokuapp.com/threads/${threadId}`)
+        return axios.delete(`${apiUrl}/threads/${threadId}`)
             .then(res => dispatch(requestDeleteThreadSuccess(res.data, threadId)))
             .catch(e => dispatch(requestDeleteThreadError(e)))
     };
@@ -137,7 +138,7 @@ export const requestEditThreadError = error => {
 export const editThread = (threadId, threadData) => {
     return dispatch => {
         dispatch(requestEditThread());
-        return axios.put(`https://foorumiapiprod.herokuapp.com/threads/${threadId}`, threadData)
+        return axios.put(`${apiUrl}/threads/${threadId}`, threadData)
             .then(res => dispatch(requestEditThreadSuccess(res.data, threadId)))
             .catch(e => dispatch(requestEditThreadError(e)))
     };

@@ -1,4 +1,5 @@
 import axios from "axios";
+import {apiUrl} from "../../config";
 
 export const REQUEST_ALL_THREADS = "REQUEST_ALL_THREADS";
 export const REQUEST_ALL_THREADS_SUCCESS = "REQUEST_ALL_THREADS_SUCCESS";
@@ -28,7 +29,7 @@ export const requestAllThreadsError = error => {
 export const getAllThreads = board => {
     return dispatch => {
         dispatch(requestAllThreads(board));
-        return axios.get(`https://foorumiapiprod.herokuapp.com/threads/board/${board}`)
+        return axios.get(`${apiUrl}/threads/board/${board}`)
             .then(res => dispatch(requestAllThreadsSuccess(res.data)))
             .catch(e => dispatch(requestAllThreadsError(e)))
     };

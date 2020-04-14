@@ -1,9 +1,8 @@
 import React, {useEffect} from 'react';
 import qs from 'querystring';
-import btoa from 'btoa'
 import axios from "axios";
+import {apiUrl} from "../../config";
 
-require('dotenv').config();
 
 const DiscordCallback = props => {
 
@@ -11,7 +10,7 @@ const DiscordCallback = props => {
         const url = qs.parse(props.location.search, {ignoreQueryPrefix: true});
         const code = url["?code"];
 
-        axios.get(`https://foorumiapiprod.herokuapp.com/discord/login/token/${code}`)
+        axios.get(`${apiUrl}/discord/login/token/${code}`)
             .then(res => {
                 const token = res.data.token;
                 window.localStorage.setItem('dToken', token);

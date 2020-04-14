@@ -17,8 +17,6 @@ import PrivateRoute from "./components/navigation/PrivateRoute";
 import Navbar from "./components/navigation/Navbar";
 import Profile from "./pages/Profile";
 import PayPalForm from "./components/payment/PayPalForm";
-import RegisterCallback from "./components/discord/RegisterCallback";
-import BoardLinks from "./components/boards/BoardLinks";
 import Loader from "./components/misc/loader/Loader";
 import Board from "./pages/Board";
 import Thread from "./pages/Thread";
@@ -56,7 +54,6 @@ function App() {
                 <Route path="/b/:board/:thread" exact component={Thread}/>
                 <Switch>
                     <Route path="/discord/login/callback" component={DiscordCallback}/>
-                    <Route path="/discord/register/callback" component={RegisterCallback}/>
                 </Switch>
                 <Footer/>
             </AppWrapper>

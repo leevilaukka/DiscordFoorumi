@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {apiUrl} from "../config";
 
 export const REQUEST_USER = "REQUEST_USER";
 export const REQUEST_USER_SUCCESS = "REQUEST_USER_SUCCESS";
@@ -34,7 +35,7 @@ export const requestUserError = error => {
 export const getUser = discordID => {
     return dispatch => {
         dispatch(requestUser(discordID));
-        return axios.get(`https://foorumiapiprod.herokuapp.com/users/discord/users/${discordID}`)
+        return axios.get(`${apiUrl}/users/discord/users/${discordID}`)
             .then(res => dispatch(requestUserSuccess(res.data)))
             .catch(e => dispatch(requestUserError(e)))
     };
@@ -64,7 +65,7 @@ export const requestCreateUserError = error => {
 export const postUser = userdata => {
     return dispatch => {
         dispatch(requestCreateUser());
-        return axios.post(`https://foorumiapiprod.herokuapp.com/users/`, userdata)
+        return axios.post(`${apiUrl}/users/`, userdata)
             .then(res => dispatch(requestCreateUserSuccess(res.data)))
             .catch(e => dispatch(requestCreateUserError(e)))
     };

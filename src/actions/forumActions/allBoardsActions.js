@@ -1,4 +1,5 @@
 import axios from "axios";
+import {apiUrl} from "../../config";
 
 export const REQUEST_ALL_BOARDS = "REQUEST_ALL_BOARDS";
 export const REQUEST_ALL_BOARDS_SUCCESS = "REQUEST_ALL_BOARDS_SUCCESS";
@@ -27,7 +28,7 @@ export const requestAllBoardsError = error => {
 export const getAllBoards = () => {
     return dispatch => {
         dispatch(requestAllBoards());
-        return axios.get(`https://foorumiapiprod.herokuapp.com/boards/`)
+        return axios.get(`${apiUrl}/boards/`)
             .then(res => dispatch(requestAllBoardsSuccess(res.data)))
             .catch(e => dispatch(requestAllBoardsError(e)))
     };
