@@ -23,6 +23,7 @@ import Thread from "./pages/Thread";
 import Footer from "./components/misc/footer/Footer";
 import Rickroll from "./components/misc/Rickroll";
 import DiscordWidget from "./components/misc/DiscordWidget";
+import ScrollTopArrow from "./components/navigation/ScrollTopArrow";
 
 function App() {
 
@@ -45,6 +46,7 @@ function App() {
         <Router>
             <AppWrapper className="App">
                 <Navbar/>
+                <ScrollTopArrow/>
                 <Route path="/" exact component={Rickroll}/>
                 <Route path="/illuminati" exact component={DiscordWidget}/>
                 <Route path="/loader" component={Loader}/>
