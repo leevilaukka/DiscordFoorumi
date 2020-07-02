@@ -10,6 +10,7 @@ import ReactMarkdown from "react-markdown";
 import logo from "../../assets/Discord-Logo-Color.png";
 import YoutubeEmbed from "../misc/YoutubeEmbed";
 import CreateArticle from "../forms/CreateArticle";
+import ShareButton from "../misc/ShareButton";
 
 const ThreadWrapper = styled.div`
   display: flex;
@@ -39,6 +40,7 @@ const ThreadInfo = styled.div`
   border-radius: 5px;
   padding: 1rem;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
 `;
 
 const ThreadTitle = styled.h2`
@@ -53,7 +55,16 @@ const ThreadBody = styled.div`
 
 const ThreadBodyText = styled.div`
   margin-bottom: 1rem;
-`
+`;
+
+const ThreadButtonWrapper = styled.div`
+  display: flex;
+  margin-left: auto;
+  float: right;
+  background-color: #23272f;
+  padding: .2rem;
+  border-radius: 5px;
+`;
 
 const Timestamp = styled.div`
   margin-top: 5px;
@@ -92,14 +103,23 @@ const CurrentThread = () => {
                 <ThreadTitle>
                     {currentThread.title}
                 </ThreadTitle>
+
                 <Timestamp><ThreadAvatar
                     src={currentThread.user ? currentThread.user.avatar ? `https://cdn.discordapp.com/avatars/${currentThread.user.discordid}/${currentThread.user.avatar}.jpg` : logo : logo}/>
                     <p>{currentThread.user ? currentThread.user.username : "Anonyymi"} - {formatDate(currentThread.date)}</p>
                 </Timestamp>
+
                 <ThreadBody>
                     <ThreadBodyText><ReactMarkdown children={currentThread.body} escapeHtml={false}/></ThreadBodyText>
                     {currentThread.embed && <YoutubeEmbed videoID={currentThread.embed}/>}
                 </ThreadBody>
+                { navigator.share &&
+                    <ThreadButtonWrapper>
+                        <ShareButton title={`${currentThread.board.title} - ${currentThread.title}`} text={currentThread.body} url={window.location.href} />
+                    </ThreadButtonWrapper>
+                }
+
+
             </ThreadInfo>
             <CreateArticle/>
             {
