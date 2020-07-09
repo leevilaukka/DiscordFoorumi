@@ -112,7 +112,7 @@ const Navbar = () => {
                 {loggedIn && !userLoading ? <SMessage>Tervetuloa, {user.username}</SMessage> :
                     <SMessage>Kirjaudu sisään!</SMessage>}
                 {loggedIn && !userLoading ? <Link to="/profile"> {user.avatar ?
-                    <SProfileImg src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.jpg`} alt=""/> :
+                    <SProfileImg src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`} alt=""/> :
                     <SProfileImg src={logo} alt=""/>} </Link> : null}
             </ProfileWrapper>
             {loggedIn && !forumLoading ? <Logout/> : <Login/>}

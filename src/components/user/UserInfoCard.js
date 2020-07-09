@@ -110,7 +110,7 @@ const UserInfoCard = () => {
             <UserCard>
                 <UserImageWrapper>
                     {user.avatar ?
-                        <UserImage src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.jpg`}/> :
+                        <UserImage src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`}/> :
                         <UserImage src={logo} alt=""/>}
                 </UserImageWrapper>
                 <UserInfo>
